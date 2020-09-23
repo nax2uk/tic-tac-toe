@@ -3,7 +3,7 @@ class Board
     def prints_horizontal_board_line
         puts "+---+---+---+"
     end
-    # def prints_number_coord
+    # def prints_number_coord_row
     #     puts "    1   2    3"
     # end
     # def print_1st_row 
