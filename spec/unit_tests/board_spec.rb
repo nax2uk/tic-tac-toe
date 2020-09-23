@@ -12,6 +12,12 @@ describe Board do
                 Board.new.prints_horizontal_board_line
             end.to output("   +---+---+---+ \n").to_stdout
         end
+        it "displays row A of the board" do
+            expect do
+                Board.new.prints_row_A
+            end.to output("A  |   |   |   | \n").to_stdout
+        end
+
 
 
 # "     1   2   3  "

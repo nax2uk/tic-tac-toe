@@ -8,15 +8,15 @@ class Board
 # "C  |   |   |   |"
 # "   +---+---+---+ "
 
+    def prints_number_coord_row
+        puts "     1   2   3  \n"
+    end
     def prints_horizontal_board_line
         puts "   +---+---+---+ \n"
     end
-    # def prints_number_coord_row
-    #     puts "    1   2    3"
-    # end
-    # def print_1st_row 
-    #     puts "A|   |   |   |   |"
-    # end
+    def prints_row_A 
+        puts "A  |   |   |   | \n"
+    end
     # def print_2nd_row 
     #     puts "B|   |   |   |   |"
     # end
