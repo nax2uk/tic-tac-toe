@@ -9,7 +9,7 @@ class Board
 # "   +---+---+---+ "
 
     def prints_horizontal_board_line
-        puts "+---+---+---+"
+        puts "   +---+---+---+ \n"
     end
     # def prints_number_coord_row
     #     puts "    1   2    3"
