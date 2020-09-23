@@ -19,4 +19,20 @@ describe TicTacToe do
        
         end
     end
+
+    # context "#set_continue - checks that user enters correct input when asked if user wants to continue" do
+    #     tic_tac_toe = TicTacToe.new
+    #     it "returns 'y' or 'n' in case of valid input" do
+    #         allow(tic_tac_toe).to receive(:gets).and_return("y\n")
+    #         # tic_tac_toe.stub(:gets).and_return("y\n")
+    #         expect(tic_tac_toe.set_continue).to eq("y")
+    #     end
+    #     it "doesnt return 'y' or 'n' on invalid input" do
+    #         allow(tic_tac_toe).to receive(:gets).and_return("d\n")
+    #         expect{tic_tac_toe.set_continue}.to output(
+    #             "Do you want to continue? y/n\nPlease enter y or n\n"
+    #         ).to_stdout
+    #       end
+    # end
+
 end
