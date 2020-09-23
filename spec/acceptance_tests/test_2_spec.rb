@@ -6,7 +6,7 @@ require './tic_tac_toe'
 
 describe "AC Test 2: User has read the instructions and wants to continue with the game" do
     context "After user inputs 'y' to continue" do
-        it "displays an empty board" do
+        xit "displays an empty board" do
 
         end
     end
