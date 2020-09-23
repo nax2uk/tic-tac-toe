@@ -14,17 +14,17 @@ describe Board do
         end
         it "displays row A of the board" do
             expect do
-                Board.new.prints_row_A
+                Board.new.prints_row("A")
             end.to output("A  |   |   |   | \n").to_stdout
         end
         it "displays row B of the board" do
             expect do
-                Board.new.prints_row_B
+                Board.new.prints_row("B")
             end.to output("B  |   |   |   | \n").to_stdout
         end
         it "displays row C of the board" do
             expect do
-                Board.new.prints_row_C
+                Board.new.prints_row("C")
             end.to output("C  |   |   |   | \n").to_stdout
         end
         it "displays a full empty board" do
