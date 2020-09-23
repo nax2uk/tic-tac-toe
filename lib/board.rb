@@ -1,3 +1,5 @@
+#require 'colorize'
+
 class Board
 # "     1   2   3  "
 # "   +---+---+---+ "
@@ -9,20 +11,17 @@ class Board
 # "   +---+---+---+ "
 
     def prints_number_coord_row
-        puts "     1   2   3  \n"
+        puts "     1   2   3  "
+        # puts "     1   2   3  ".bold.blue
     end
+
     def prints_horizontal_board_line
         puts "   +---+---+---+ \n"
     end
+
     def prints_row(row)
         puts "#{row}  |   |   |   | \n"
     end
-    # def prints_row_B
-    #     puts "B  |   |   |   | \n"
-    # end
-    # def prints_row_C
-    #     puts "C  |   |   |   | \n"
-    # end
 
     def prints_empty_board
         self.prints_number_coord_row
