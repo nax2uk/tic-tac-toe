@@ -17,7 +17,18 @@ describe "AC Test 1: User starts a game" do
         it "displays instructions" do
             expect do
                 tic_tac_toe.output_instructions
-            end.to output("Instructions:\n\nThe game is played on a 3x3 grid.\nYou are X, your opponent is O. Players take turns putting their marks in empty squares.\nThe first player to get 3 of their marks in a row (up, down, across, or diagonally) is the winner.\nIf all 9 squares are full and no player has 3 marks in a row, the game is over.\n\n\n").to_stdout
+            end.to output(
+                <<~HEREDOC
+                Instructions:
+                
+                The game is played on a 3x3 grid.
+                You are X, your opponent is O. Players take turns putting their marks in empty squares.
+                The first player to get 3 of their marks in a row (up, down, across, or diagonally) is the winner.
+                If all 9 squares are full and no player has 3 marks in a row, the game is over.
+                
+                
+                HEREDOC
+                ).to_stdout
         end
     end
 end
