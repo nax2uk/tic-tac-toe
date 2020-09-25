@@ -1,7 +1,7 @@
 # Tic Tac Toe (incomplete)
 
 * This is a Made Tech Academy pair programming task. 
-* It is a tic tac toe game which runs in the terminal. 
+* It is a tic tac toe game, coded in Ruby, which runs in the terminal. 
 * It uses the minimax algortihm to ensure that the user can either draw or lose against the computer.
 
 ## Learning Aims
