@@ -19,7 +19,7 @@ These instructions will get you a copy of the project up and running on your loc
 
 Download and install 
 
- Ruby [node](https://www.ruby-lang.org/en/downloads/)
+ Ruby [ruby](https://www.ruby-lang.org/en/downloads/)
 
 
 ### Installing
@@ -27,9 +27,9 @@ Download and install
 Clone this repo:
 
 ```bash
-git clone https://github.com/northcoders/my-student-tracker
+git clone https://github.com/nax2uk/tic-tac-toe.git
 
-cd my-student-tracker
+cd tic-tac-toe
 
 ```
 
