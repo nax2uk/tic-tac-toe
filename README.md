@@ -17,9 +17,9 @@ These instructions will get you a copy of the project up and running on your loc
 
 ### Prerequisites
 
-Download and install 
+Download and install Ruby
 
- Ruby [ruby](https://www.ruby-lang.org/en/downloads/)
+ [Ruby](https://www.ruby-lang.org/en/downloads/)
 
 
 ### Installing
