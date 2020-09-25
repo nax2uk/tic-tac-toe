@@ -47,5 +47,5 @@ ruby lib/main.rb
 ## Authors
 
 * **Azlina Yeo** [nax2uk](https://github.com/nax2uk)
-* **Chloe Wong** [chloehkwong1]()
+* **Chloe Wong** [chloehkwong1](https://github.com/chloehkwong1)
 
