@@ -1,4 +1,4 @@
-# Tic Tac Toe (incomplete)
+# Tic Tac Toe (still working on it)
 
 * This is a Made Tech Academy pair programming task. 
 * It is a tic tac toe game, coded in Ruby, which runs in the terminal. 
