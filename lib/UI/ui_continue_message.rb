@@ -2,7 +2,7 @@ class UIContinueMessage
 
         def capture_input
             print "Do you want to continue? y/n: "
-            # gets.chomp
+            gets.chomp
         end
     
         def validate_input(input)
