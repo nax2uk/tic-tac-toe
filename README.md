@@ -40,7 +40,7 @@ bundle install
 
 Run main.rb
 ```
-ruby lib/main.rb
+ruby main.rb
 ```
 
 
