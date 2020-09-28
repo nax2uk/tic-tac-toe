@@ -1,6 +1,6 @@
 
 # what is being output on the screen / terminal
-class UI
+class UIStandardMessage
 
     def output_welcome_message
         puts "Welcome to Tic Tac Toe!\n\n"
@@ -18,23 +18,8 @@ class UI
 
         HEREDOC
     end
-
-    def set_continue
-        print "Do you want to continue? y/n: "
-        continue = gets.chomp
-    end
-
-    def continue(continue)
-        # if continue == 'y'
-
-        #     return continue
-        # elsif continue == 'n'
-        #     return continue
-        # else 
-        #     puts "Please enter y or n."
-        #     set_continue 
-        # end
-    end
-
+    
 end
+    
+
 

@@ -1,6 +1,6 @@
 #require 'colorize'
-
-class Board
+#prints board to UI
+class UIBoard
 # "     1   2   3  "
 # "   +---+---+---+ "
 # "A  | X | O | X | "
