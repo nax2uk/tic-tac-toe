@@ -12,7 +12,7 @@ def print_board_or_exit_game(continue)
     end
 end
 
-def ask_continue_and_go_to_next_step
+def print_continue_and_go_to_next_step
     ui_continue_message = UIContinueMessage.new
     continue = ''
     continue_is_valid = false
@@ -27,10 +27,14 @@ def ask_continue_and_go_to_next_step
 
 end
 
-ui_standard_messages = UIStandardMessage.new
-ui_standard_messages.output_welcome_message
-ui_standard_messages.output_instructions
-ask_continue_and_go_to_next_step
+def print_welcome_and_output_instructions
+    ui_standard_messages = UIStandardMessage.new
+    ui_standard_messages.output_welcome_message
+    ui_standard_messages.output_instructions
+end
+
+print_welcome_and_output_instructions
+print_continue_and_go_to_next_step
 
 
 
