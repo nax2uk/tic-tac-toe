@@ -5,6 +5,24 @@ ui_standard_messages = UIStandardMessages.new
 board = UIBoard.new
 ui_standard_messages.output_welcome_message
 ui_standard_messages.output_instructions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # ask_continue_and_go_to_next_step
 
 # # continue = ui.set_continue
