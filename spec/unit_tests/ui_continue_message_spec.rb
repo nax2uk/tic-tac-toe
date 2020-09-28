@@ -13,8 +13,18 @@ describe UIContinueMessage do
 
     context "#validate_input" do
         context "" do
-            it "" do
+            it "returns true if it is a 'y' or 'n'" do
+                expect(ui_continue_message.validate_input("y")).to eq(true)
+                expect(ui_continue_message.validate_input("n")).to eq(true)
             end
+            it "returns false if it is not a 'y' or 'n'" do
+                expect(ui_continue_message.validate_input("a")).to eq(false)
+            end
+            it "returns true if it is a 'Y' or 'N'" do
+                expect(ui_continue_message.validate_input("Y")).to eq(true)
+                expect(ui_continue_message.validate_input("N")).to eq(true)
+            end
+
         end
     end
 

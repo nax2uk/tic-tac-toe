@@ -6,7 +6,7 @@ class UIContinueMessage
         end
     
         def validate_input(input)
-            if input == 'y' || input =='n'
+            if input.downcase == 'y' || input.downcase =='n'
                 return true
             else
                 print "Please enter 'y' or 'n'!"
