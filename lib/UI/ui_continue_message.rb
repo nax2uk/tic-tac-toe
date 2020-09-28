@@ -9,7 +9,7 @@ class UIContinueMessage
             if input.downcase == 'y' || input.downcase =='n'
                 return true
             else
-                print "Please enter 'y' or 'n'!"
+                print "Please enter 'y' or 'n'!\n"
                 return false
             end
         end
