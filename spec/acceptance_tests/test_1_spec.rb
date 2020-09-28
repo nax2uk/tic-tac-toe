@@ -3,20 +3,20 @@
 # When: When the user wants to start the game on the command line
 # Then: A welcome and instructions will appear.
 
-require './lib/tic_tac_toe'
+require './lib/ui'
 
 describe "AC Test 1: User starts a game" do
     context "at the start of the game" do
-        tic_tac_toe = TicTacToe.new
+        ui = UI.new
         it "displays a welcome message" do
             expect do
-                tic_tac_toe.output_welcome_message
+                ui.output_welcome_message
             end.to output("Welcome to Tic Tac Toe!\n\n").to_stdout
         end
 
         it "displays instructions" do
             expect do
-                tic_tac_toe.output_instructions
+                ui.output_instructions
             end.to output(
                 <<~HEREDOC
                 Instructions:

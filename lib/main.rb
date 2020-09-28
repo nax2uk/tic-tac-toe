@@ -1,9 +1,15 @@
-require_relative 'tic_tac_toe'
+require_relative 'ui'
 require_relative 'board'
 
-tic_tac_toe = TicTacToe.new
-tic_tac_toe.output_welcome_message
-tic_tac_toe.output_instructions
+ui = UI.new
+ui.output_welcome_message
+ui.output_instructions
+ui.output_next_block
 
-# board = Board.new
-# board.prints_empty_board
+# continue = ui.set_continue
+
+
+# if continue == 'y'
+#     board = Board.new
+#     board.prints_empty_board
+# end
