@@ -21,8 +21,7 @@ class Board
         @board_array[ROW[row]][COL[column]] = symbol
     end
 
-    def has_won?(array)
-        false
-        #array = [["X","X","X"], ["","",""], ["","",""]]
+    def get_row(row)
+        ["", "", ""]
     end
 end
