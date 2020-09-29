@@ -12,5 +12,8 @@ class Board
         if row == "B"
             @board_array[1][column.to_i - 1] = symbol
         end
+        if row == "C"
+            @board_array[2][column.to_i - 1] = symbol
+        end
     end
 end
