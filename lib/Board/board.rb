@@ -22,13 +22,6 @@ class Board
     end
 
     def get_row(row)
-        if row == "A"
-            row_array = @board_array[0]
-        elsif row == "B"
-            row_array = @board_array[1]
-        elsif row == "C"
-            row_array = @board_array[2]
-        end
-        row_array
+        row_array = @board_array[ROW[row]]
     end
 end
