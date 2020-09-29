@@ -20,4 +20,9 @@ class Board
     def input_entry(symbol, row, column)
         @board_array[ROW[row]][COL[column]] = symbol
     end
+
+    def has_won?(array)
+        false
+        #array = [["X","X","X"], ["","",""], ["","",""]]
+    end
 end

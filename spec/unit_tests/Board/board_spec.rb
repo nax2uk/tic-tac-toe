@@ -48,4 +48,16 @@ describe Board do
             expect(board.board_array).to eq([["X","O",""], ["X","","X"], ["","O",""]])
         end
     end
+    context "#has_won?" do
+        it "returns false if there is only one 'X' in the board array" do
+            array = [["X","",""], ["","",""], ["","",""]]
+            expect(board.has_won?(array)).to eq(false)
+        end
+        
+        xit "returns true if the first row contains three 'X's" do
+            array = [["X","X","X"], ["","",""], ["","",""]]
+            expect(board.has_won?(array)).to eq(true)
+        end
+    end
 end
+
