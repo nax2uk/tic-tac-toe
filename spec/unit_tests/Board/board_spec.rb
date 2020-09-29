@@ -57,6 +57,16 @@ describe Board do
             board.input_entry("X", "A", "1")
             expect(board.get_row("A")).to eq(["X", "", ""])
         end
+        it "returns an array containing entries in row B" do
+            board.input_entry("X", "A", "1")
+            board.input_entry("O", "B", "2")
+            expect(board.get_row("B")).to eq(["", "O", ""])
+        end
+        it "returns an array containing entries in row C" do
+            board.input_entry("X", "A", "1")
+            board.input_entry("O", "C", "2")
+            expect(board.get_row("C")).to eq(["", "O", ""])
+        end
     end
 end
 
