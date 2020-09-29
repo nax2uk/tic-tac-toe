@@ -5,15 +5,13 @@ class Board
         @board_array = Array.new(3) {Array.new(3, "")} 
     end
 
+    ROW = {
+            'A'=> 0,
+            'B'=> 1,
+            'C'=> 2
+    }.freeze
+
     def input_entry(symbol, row, column)
-        if row == "A"
-            @board_array[0][column.to_i - 1] = symbol
-        end
-        if row == "B"
-            @board_array[1][column.to_i - 1] = symbol
-        end
-        if row == "C"
-            @board_array[2][column.to_i - 1] = symbol
-        end
+        @board_array[ROW[row]][column.to_i - 1] = symbol
     end
 end
