@@ -11,7 +11,13 @@ class Board
             'C'=> 2
     }.freeze
 
+    COL = {
+            '1'=> 0,
+            '2'=> 1,
+            '3'=> 2
+    }.freeze 
+
     def input_entry(symbol, row, column)
-        @board_array[ROW[row]][column.to_i - 1] = symbol
+        @board_array[ROW[row]][COL[column]] = symbol
     end
 end

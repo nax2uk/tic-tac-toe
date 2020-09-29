@@ -25,12 +25,27 @@ describe Board do
             board.input_entry("O", "A", "1")
             expect(board.board_array).to eq([["O","",""], ["","",""], ["","",""]])
         end
+        it "takes in an entry with column coordinate '2' and adds it into the board array" do
+            board.input_entry("O", "B", "2")
+            expect(board.board_array).to eq([["","",""], ["","O",""], ["","",""]])
+        end
+        it "takes in an entry with column coordinate '3' and adds it into the board array" do
+            board.input_entry("O", "C", "3")
+            expect(board.board_array).to eq([["","",""], ["","",""], ["","","O"]])
+        end
         it "takes in 2 entries consecutively with row coordinate 'A' and adds them to the board array" do
             board.input_entry("X", "A", "1")
             board.input_entry("X", "A", "2")
             expect(board.board_array).to eq([["X","X",""], ["","",""], ["","",""]])
         end
 
-   
+        it "takes in 5 entries consecutively with a mixture of row and column coordinates and adds them to the board array" do
+            board.input_entry("X", "A", "1")
+            board.input_entry("O", "A", "2")
+            board.input_entry("X", "B", "3")
+            board.input_entry("O", "C", "2")
+            board.input_entry("X", "B", "1")
+            expect(board.board_array).to eq([["X","O",""], ["X","","X"], ["","O",""]])
+        end
     end
 end
