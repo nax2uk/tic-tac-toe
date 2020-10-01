@@ -27,7 +27,7 @@ class Board
     end
 
     def get_row(row)
-        row_array = @board_array[ROW[row]].dup
+        @board_array[ROW[row]].dup
     end
 
     def get_column(column)
