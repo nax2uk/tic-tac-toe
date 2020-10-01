@@ -1,3 +1,8 @@
+# Acceptance tests are written from the pov of the user
+# Think about whether the test could be broken
+# Features vs Scenarios : just helps organise tests e.g. feature : ability to tell when someone has won/knowing who has won the game. scenario: actual things your testing (very similar to it and context) e.g when someone has won, and when someone hasn't won) basically just happy and sad route
+# Don't put too much into acceptance tests because they are SLOW. All the possible ways of winning should go into unit cases (e.g. edge cases)
+
 # Test 3: 
 # Feature: It will exit the game if the user decides not to play
 # Scenario: When a user has started the game, read the instructions and decided not to continue the game
