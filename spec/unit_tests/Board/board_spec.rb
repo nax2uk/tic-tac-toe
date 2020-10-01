@@ -72,6 +72,10 @@ describe Board do
             board.input_entry("O", "C", "2")
             expect(board.get_row("C")).to eq(["X", "O", ""])
         end
+        it "returns a copy of the board row array and not a reference to it" do
+            board.input_entry("X", "A", "1")
+            expect(board.get_row("A").object_id).to_not eq(board.get_board_row_object_id("A"))
+        end
     end
     context "#get_column" do
         it "returns an array containing entries in column 1" do

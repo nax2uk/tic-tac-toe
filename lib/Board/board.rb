@@ -21,8 +21,13 @@ class Board
         @board_array[ROW[row]][COL[column]] = symbol
     end
 
+    # method created for testing purposes.
+    def get_board_row_object_id(row)
+        @board_array[ROW[row]].object_id
+    end
+
     def get_row(row)
-        row_array = @board_array[ROW[row]]
+        row_array = @board_array[ROW[row]].dup
     end
 
     def get_column(column)
