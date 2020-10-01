@@ -29,4 +29,20 @@ class Board
     def get_row(row)
         row_array = @board_array[ROW[row]].dup
     end
+
+    def get_column(column)
+        # if @board_array[0][COL[column]] == "X"
+        #     ["X", "", ""]
+        # elsif @board_array[0][COL[column]] == ""
+        #     ["","",""]
+        # elsif @board_array[0][COL[column]] == "O"
+        #     ["O","",""]
+        # end
+        if @board_array[1][COL[column]] == "X"
+            return ["", "X", ""]
+        elsif @board_array[1][COL[column]] == "O"
+            return ["", "O", ""]
+        end
+        ["#{@board_array[0][COL[column]]}","",""]
+    end
 end
