@@ -13,8 +13,7 @@
 # Test 4: 
 # Feature: Enables user to choose the location of their next move
 # Enables user to have the first turn and choose a location
-# Scenario: The game will ask the user where to put their entry, "O", after printing the empty board at the start of the game has been printed and for all subsequent user moves.
-# After the empty board has been printed, the game will ask the user to choose where to put his entry, "O"
+# Scenario: The game will ask the user where to put their entry, "O".
 # Given: "Choose a location for 'O'" is displayed
 # When: The user enters the location
 # Then: The updated board gets displayed
