@@ -2,9 +2,9 @@
 # Each component can have their individual controllers ()
 # But can have one central controller which is what we have on lines 40/41
 
-# require './lib/UI/ui_standard_message'
-# require './lib/UI/ui_continue_message'
-# require './lib/UI/ui_board'
+require './lib/UI/ui_standard_message'
+require './lib/UI/ui_continue_message'
+require './lib/UI/ui_board'
 
 #  move to controller
 def print_board_or_exit_game(continue)
