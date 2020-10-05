@@ -111,6 +111,43 @@ describe Board do
             board.input_entry("O", "C", "1")
             expect(board.get_column("1")).to eq(["", "", "O"])
         end
+        it "returns an array containing entries in column 2 when there is an 'X' at (A, 2)" do
+            board.input_entry("X", "A", "2")
+            expect(board.get_column("2")).to eq(["X", "", ""])
+        end
+        it "returns an array containing 2 entries in column 1 when there is an 'X' at (A, 1) and 'O' at (B, 1)" do
+            board.input_entry("X", "A", "1")
+            board.input_entry("O", "B", "1")
+            expect(board.get_column("1")).to eq(["X", "O", ""])
+        end
+        it "returns an array containing 3 entries in column 1 when there is an 'X' at (A, 1) and (C, 1) and 'O' at (B, 1)" do
+            board.input_entry("X", "A", "1")
+            board.input_entry("O", "B", "1")
+            board.input_entry("X", "C", "1")
+            expect(board.get_column("1")).to eq(["X", "O", "X"])
+        end
+        it "returns an array containing 3 entries in column 2 when there is an 'O' at (A, 2) and (C, 2) and 'X' at (B, 2)" do
+            board.input_entry("O", "A", "2")
+            board.input_entry("X", "B", "2")
+            board.input_entry("O", "C", "2")
+            expect(board.get_column("2")).to eq(["O", "X", "O"])
+        end
+        it "returns an array containing 3 entries in column 3 when there is an 'O' at (A, 3) and (C, 3) and 'X' at (B, 3)" do
+            board.input_entry("O", "A", "3")
+            board.input_entry("X", "B", "3")
+            board.input_entry("O", "C", "3")
+            expect(board.get_column("3")).to eq(["O", "X", "O"])
+        end
+        it "returns an array containing 3 entries in column 3 when there is an 'O' at (A, 3) and (C, 3) and 'X' at (B, 3)" do
+            board.input_entry("O", "A", "1")
+            board.input_entry("X", "B", "2")
+            board.input_entry("O", "C", "3")
+            board.input_entry("X", "B", "3")
+            board.input_entry("O", "C", "1")
+            expect(board.get_column("1")).to eq(["O", "", "O"])
+            expect(board.get_column("2")).to eq(["", "X", ""])
+            expect(board.get_column("3")).to eq(["", "X", "O"])
+        end
     end
 end
 

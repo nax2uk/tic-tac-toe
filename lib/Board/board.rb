@@ -33,25 +33,9 @@ class Board
     def get_column(column)
     
         column_array = Array.new(3, "") 
-        # if @board_array[1][COL[column]] == "X"
-        #     column_array[1] = "X"
-        # elsif @board_array[1][COL[column]] == "O"
-        #     column_array[1] = "O"
-        # elsif @board_array[2][COL[column]] == "X"
-        #     column_array[2] = "X" 
-        # elsif @board_array[2][COL[column]] == "O"
-        #     column_array[2] = "O"
-        # end
-        # column_array.each do 
-        #     |column_index| column_array[column_index] = @board_array[column_index][COL[column]]
-        # end
-            
-
-
         for i in 0..2 do
-            column_array[i] = @board_array[i][COL[column]] 
+            column_array[i] = @board_array[i][COL[column]].dup
         end
         return column_array
-     
     end
 end
