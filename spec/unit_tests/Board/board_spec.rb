@@ -77,6 +77,7 @@ describe Board do
             expect(board.get_row("A").object_id).to_not eq(board.get_board_row_object_id("A"))
         end
     end
+    
     context "#get_column" do
         it "returns an array containing entries in column 1" do
             expect(board.get_column("1")).to eq(["", "", ""])
@@ -147,6 +148,42 @@ describe Board do
             expect(board.get_column("1")).to eq(["O", "", "O"])
             expect(board.get_column("2")).to eq(["", "X", ""])
             expect(board.get_column("3")).to eq(["", "X", "O"])
+        end
+    end
+
+    context "#get_left_diagonal" do
+        it "returns an array containing entries along the left diagonal when there is an 'X' at (A, 1)" do
+            board.input_entry("X", "A", "1")
+            expect(board.get_left_diagonal).to eq(["X", "", ""])
+        end
+        it "returns an array containing 2 entries, (A, 1) and (B, 2), along the left diagonal" do
+            board.input_entry("X", "A", "1")
+            board.input_entry("O", "B", "2")
+            expect(board.get_left_diagonal).to eq(["X", "O", ""])
+        end
+        it "returns an array containing 3 entries, (A, 1), (B, 2) and (C, 3), along the left diagonal" do
+            board.input_entry("X", "A", "1")
+            board.input_entry("O", "B", "2")
+            board.input_entry("X", "C", "3")
+            expect(board.get_left_diagonal).to eq(["X", "O", "X"])
+        end
+    end
+
+    context "#get_right_diagonal" do
+        it "returns an array containing entries along the right diagonal when there is an 'X' at (A, 3)" do
+            board.input_entry("X", "A", "3")
+            expect(board.get_right_diagonal).to eq(["X", "", ""])
+        end
+        it "returns an array containing 2 entries, (A, 3) and (B, 2), along the right diagonal" do
+            board.input_entry("X", "A", "3")
+            board.input_entry("O", "B", "2")
+            expect(board.get_right_diagonal).to eq(["X", "O", ""])
+        end
+        it "returns an array containing 3 entries, (A, 1), (B, 2) and (C, 3), along the right diagonal" do
+            board.input_entry("X", "A", "3")
+            board.input_entry("O", "B", "2")
+            board.input_entry("X", "C", "1")
+            expect(board.get_right_diagonal).to eq(["X", "O", "X"])
         end
     end
 end

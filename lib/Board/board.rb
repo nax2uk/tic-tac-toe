@@ -31,11 +31,27 @@ class Board
     end
 
     def get_column(column)
-    
         column_array = Array.new(3, "") 
         for i in 0..2 do
             column_array[i] = @board_array[i][COL[column]].dup
         end
         return column_array
     end
+
+    def get_left_diagonal
+        diagonal_array = Array.new(3, "")
+        diagonal_array[0] = board_array[ROW["A"]][COL["1"]]
+        diagonal_array[1] = board_array[ROW["B"]][COL["2"]]
+        diagonal_array[2] = board_array[ROW["C"]][COL["3"]]
+        diagonal_array
+    end
+
+    def get_right_diagonal
+        diagonal_array = Array.new(3, "")
+        diagonal_array[0] = board_array[ROW["A"]][COL["3"]]
+        diagonal_array[1] = board_array[ROW["B"]][COL["2"]]
+        diagonal_array[2] = board_array[ROW["C"]][COL["1"]]
+        diagonal_array
+    end
+
 end
