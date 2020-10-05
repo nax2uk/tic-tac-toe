@@ -167,6 +167,14 @@ describe Board do
             board.input_entry("X", "C", "3")
             expect(board.get_left_diagonal).to eq(["X", "O", "X"])
         end
+        it "returns an array containing 3 entries along the left diagonal when there are other entries on the board" do
+            board.input_entry("O", "A", "1")
+            board.input_entry("X", "B", "2")
+            board.input_entry("O", "B", "3")
+            board.input_entry("X", "C", "3")
+            board.input_entry("O", "C", "1")
+            expect(board.get_left_diagonal).to eq(["O", "X", "X"])
+        end
     end
 
     context "#get_right_diagonal" do
@@ -185,6 +193,15 @@ describe Board do
             board.input_entry("X", "C", "1")
             expect(board.get_right_diagonal).to eq(["X", "O", "X"])
         end
+        it "returns an array containing 3 entries along the right diagonal when there are other entries on the board" do
+            board.input_entry("O", "A", "1")
+            board.input_entry("X", "B", "2")
+            board.input_entry("O", "B", "3")
+            board.input_entry("X", "C", "3")
+            board.input_entry("O", "C", "1")
+            expect(board.get_right_diagonal).to eq(["", "X", "O"])
+        end
+
     end
 end
 
