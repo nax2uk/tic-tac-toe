@@ -31,22 +31,22 @@ class Board
     end
 
     def get_column(column)
-        # if @board_array[0][COL[column]] == "X"
-        #     ["X", "", ""]
-        # elsif @board_array[0][COL[column]] == ""
-        #     ["","",""]
-        # elsif @board_array[0][COL[column]] == "O"
-        #     ["O","",""]
+    
+        column_array = Array.new(3, "") 
+        # if @board_array[1][COL[column]] == "X"
+        #     column_array[1] = "X"
+        # elsif @board_array[1][COL[column]] == "O"
+        #     column_array[1] = "O"
+        # elsif @board_array[2][COL[column]] == "X"
+        #     column_array[2] = "X" 
+        # elsif @board_array[2][COL[column]] == "O"
+        #     column_array[2] = "O"
         # end
-        if @board_array[1][COL[column]] == "X"
-            return ["", "X", ""]
-        elsif @board_array[1][COL[column]] == "O"
-            return ["", "O", ""]
-        elsif @board_array[2][COL[column]] == "X"
-            return ["","","X"]
-        elsif @board_array[2][COL[column]] == "O"
-            return ["","","O"]
-        end
-        ["#{@board_array[0][COL[column]]}","",""]
+        column_array[0] = @board_array[0][COL[column]] 
+        column_array[1] = @board_array[1][COL[column]] 
+        column_array[2] = @board_array[2][COL[column]] 
+    
+        return column_array
+     
     end
 end
