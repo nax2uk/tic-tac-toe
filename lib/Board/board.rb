@@ -42,10 +42,15 @@ class Board
         # elsif @board_array[2][COL[column]] == "O"
         #     column_array[2] = "O"
         # end
-        column_array[0] = @board_array[0][COL[column]] 
-        column_array[1] = @board_array[1][COL[column]] 
-        column_array[2] = @board_array[2][COL[column]] 
-    
+        # column_array.each do 
+        #     |column_index| column_array[column_index] = @board_array[column_index][COL[column]]
+        # end
+            
+
+
+        for i in 0..2 do
+            column_array[i] = @board_array[i][COL[column]] 
+        end
         return column_array
      
     end
