@@ -85,6 +85,9 @@ describe Board do
             board.input_entry("O", "A", "1")
             expect(board.get_column("1")).to eq(["O", "", ""])
         end
+        it "returns an array containing entries in column 1 when there is nothing in (B, 1)" do
+            expect(board.get_column("1")).to eq(["", "", ""])
+        end
         it "returns an array containing entries in column 1 when there is an 'X' at (B, 1)" do
             board.input_entry("X", "B", "1")
             expect(board.get_column("1")).to eq(["", "X", ""])
@@ -92,6 +95,17 @@ describe Board do
         it "returns an array containing entries in column 1 when there is an 'O' at (B, 1)" do
             board.input_entry("O", "B", "1")
             expect(board.get_column("1")).to eq(["", "O", ""])
+        end
+        it "returns an array containing entries in column 1 when there is nothing in (C, 1)" do
+            expect(board.get_column("1")).to eq(["", "", ""])
+        end
+        it "returns an array containing entries in column 1 when there is an 'X' at (C, 1)" do
+            board.input_entry("X", "C", "1")
+            expect(board.get_column("1")).to eq(["", "", "X"])
+        end
+        it "returns an array containing entries in column 1 when there is an 'O' at (C, 1)" do
+            board.input_entry("O", "C", "1")
+            expect(board.get_column("1")).to eq(["", "", "O"])
         end
     end
 end

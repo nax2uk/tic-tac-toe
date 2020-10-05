@@ -37,6 +37,10 @@ class Board
             return ["", "X", ""]
         elsif @board_array[1][COL[column]] == "O"
             return ["", "O", ""]
+        elsif @board_array[2][COL[column]] == "X"
+            return ["","","X"]
+        elsif @board_array[2][COL[column]] == "O"
+            return ["","","O"]
         end
         ["#{@board_array[0][COL[column]]}","",""]
     end
