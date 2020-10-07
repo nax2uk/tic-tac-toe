@@ -2,15 +2,15 @@
 # Each component can have their individual controllers ()
 # But can have one central controller which is what we have on lines 40/41
 
-require './lib/UI/ui_standard_message'
-require './lib/UI/ui_continue_message'
-require './lib/UI/ui_board'
+require './lib/UI/standard_message'
+require './lib/UI/continue_message'
+require './lib/UI/board'
 
 #  move to controller
 def print_board_or_exit_game(continue)
     
     if continue == 'y'
-        board = UIBoard.new
+        board = UI::Board.new
         board.prints_empty_board
     elsif continue == 'n'
         exit(true)
@@ -18,7 +18,7 @@ def print_board_or_exit_game(continue)
 end
 # move to controller
 def print_continue_and_go_to_next_step
-    ui_continue_message = UIContinueMessage.new
+    ui_continue_message = UI::ContinueMessage.new
     continue = ''
     continue_is_valid = false
 
@@ -34,7 +34,7 @@ end
 
 # move to controller
 def print_welcome_and_output_instructions
-    ui_standard_messages = UIStandardMessage.new
+    ui_standard_messages = UI::StandardMessage.new
     ui_standard_messages.output_welcome_message
     ui_standard_messages.output_instructions
 end

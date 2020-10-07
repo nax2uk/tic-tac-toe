@@ -4,20 +4,20 @@
 # When: When the user wants to start the game on the command line
 # Then: A welcome and instructions will appear.
 
-require './lib/UI/ui_standard_message'
+require './lib/UI/standard_message'
 
 describe "AC Test 1: User starts a game" do
     context "at the start of the game" do
-        ui_standard_message = UIStandardMessage.new
+        standard_message = UI::StandardMessage.new
         it "displays a welcome message" do
             expect do
-                ui_standard_message.output_welcome_message
+                standard_message.output_welcome_message
             end.to output("Welcome to Tic Tac Toe!\n\n").to_stdout
         end
 
         it "displays instructions" do
             expect do
-                ui_standard_message.output_instructions
+                standard_message.output_instructions
             end.to output(
                 <<~HEREDOC
                 Instructions:

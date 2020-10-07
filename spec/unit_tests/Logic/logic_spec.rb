@@ -1,11 +1,11 @@
 require './lib/Logic/logic'
-require './lib/Board/board'
+require './lib/BoardArray/board'
 
-describe Logic do
-    let(:logic) {Logic.new}
-    let(:board) {Board.new}
+describe Logic::BoardLogic do
+    let(:logic) {Logic::BoardLogic.new}
+    let(:board) {BoardArray::Board.new}
 
-    context "#same_entries_in_a_line" do
+    context "#same_entries_in_a_line?" do
         it "returns false if row entries are not the same" do
             board.input_entry("X", "A", "1")
             row_array = board.get_row("A")
