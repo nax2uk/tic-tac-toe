@@ -72,8 +72,26 @@ describe Logic do
     end
 
     context "#has_won?" do
-        it "returns false if it's an empty board" do
-            
+        it "returns false if user/computer inputs 'O' at (A,1)" do
+            board.input_entry("O", "A", "1")
+            expect(logic.has_won?("A", "1", board)).to eq(false)
+        end
+        it "returns false if usercomputer inputs " do
+            # ARRANGE
+            board.input_entry("O", "A", "1")
+            # ACT
+            board.input_entry("X", "B", "1")
+            # ASSERT
+            expect(logic.has_won?("B", "1", board)).to eq(false)
+        end
+        it "returns true if user/computer inputs " do
+            # ARRANGE
+            board.input_entry("O", "A", "1")
+            board.input_entry("X", "B", "1")
+            # ACT
+            board.input_entry("X", "C", "1")
+            # ASSERT
+            expect(logic.has_won?("C", "1", board)).to eq(false)
         end
     end
 end

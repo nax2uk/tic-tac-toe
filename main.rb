@@ -39,7 +39,6 @@ def print_welcome_and_output_instructions
     ui_standard_messages.output_instructions
 end
 
-# move to controller
 print_welcome_and_output_instructions
 print_continue_and_go_to_next_step
 
