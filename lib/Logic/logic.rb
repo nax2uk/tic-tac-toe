@@ -2,7 +2,7 @@ class Logic
 
     # will be called after every time a user / computer inputs an entry
     def has_won?(row, column, board)
-       false
+       same_entries_in_a_line(board.get_row(row))
     end
 
     # checks if same entry in a line

@@ -76,7 +76,7 @@ describe Logic do
             board.input_entry("O", "A", "1")
             expect(logic.has_won?("A", "1", board)).to eq(false)
         end
-        it "returns false if usercomputer inputs " do
+        it "returns false if computer inputs 'X' and does not win " do
             # ARRANGE
             board.input_entry("O", "A", "1")
             # ACT
@@ -84,14 +84,16 @@ describe Logic do
             # ASSERT
             expect(logic.has_won?("B", "1", board)).to eq(false)
         end
-        it "returns true if user/computer inputs " do
+        it "returns true when user inputs 'O' and wins by filling a row" do
             # ARRANGE
             board.input_entry("O", "A", "1")
             board.input_entry("X", "B", "1")
+            board.input_entry("O", "A", "2")
+            board.input_entry("X", "C", "3")
             # ACT
-            board.input_entry("X", "C", "1")
+            board.input_entry("O", "A", "3")
             # ASSERT
-            expect(logic.has_won?("C", "1", board)).to eq(false)
+            expect(logic.has_won?("A", "3", board)).to eq(true)
         end
     end
 end
