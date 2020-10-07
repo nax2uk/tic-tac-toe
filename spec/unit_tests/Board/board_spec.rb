@@ -1,7 +1,7 @@
 require './lib/Board/board'
 
-describe Board do
-    let(:board) {Board.new}
+describe BoardArray::Board do
+    let(:board) {BoardArray::Board.new}
 
     context "#initialize" do
         it "creates a new board that is a 3x3 array" do
