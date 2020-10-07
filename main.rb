@@ -2,40 +2,13 @@
 # Each component can have their individual controllers ()
 # But can have one central controller which is what we have on lines 40/41
 
-require './lib/UI/continue_message'
-require './lib/UI/board'
 require './lib/Controller/start_game'
-
-#  move to controller
-def print_board_or_exit_game(continue)
-    
-    if continue == 'y'
-        board = UI::Board.new
-        board.prints_empty_board
-    elsif continue == 'n'
-        exit(true)
-    end
-end
-# move to controller
-def print_continue_and_go_to_next_step
-    ui_continue_message = UI::ContinueMessage.new
-    continue = ''
-    continue_is_valid = false
-
-    until continue_is_valid
-        continue = ui_continue_message.capture_input
-        continue_is_valid = ui_continue_message.validate_input(continue)
-    end
-
-    # continue_is_valid == true
-    print_board_or_exit_game(continue)
-
-end
+require './lib/Controller/print_board_or_exit_game'
+require './lib/Controller/continue'
 
 # move to controller
-
-print_welcome_and_output_instructions
-print_continue_and_go_to_next_step
-
-
-
+class Main
+    Controller::StartGame.new.print_welcome_and_output_instructions
+    continue = Controller::Continue.new.get_continue
+    Controller::PrintBoardOrExitGame.new.execute(continue)
+end
