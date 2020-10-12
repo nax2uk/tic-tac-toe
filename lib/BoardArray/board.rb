@@ -3,7 +3,7 @@ module BoardArray
         attr_accessor :board_array
 
         def initialize 
-            @board_array = Array.new(3) {Array.new(3, "")} 
+            @board_array = Array.new(3) {Array.new(3, " ")} 
         end
 
         ROW = {
@@ -32,7 +32,7 @@ module BoardArray
         end
 
         def get_column(column)
-            column_array = Array.new(3, "") 
+            column_array = Array.new(3, " ") 
             column_array.each_index do |i|
                 column_array[i] = @board_array[i][COL[column]].dup
             end
@@ -40,7 +40,7 @@ module BoardArray
         end
 
         def get_left_diagonal
-            diagonal_array = Array.new(3, "")
+            diagonal_array = Array.new(3, " ")
             diagonal_array[0] = board_array[ROW["A"]][COL["1"]]
             diagonal_array[1] = board_array[ROW["B"]][COL["2"]]
             diagonal_array[2] = board_array[ROW["C"]][COL["3"]]
@@ -48,7 +48,7 @@ module BoardArray
         end
 
         def get_right_diagonal
-            diagonal_array = Array.new(3, "")
+            diagonal_array = Array.new(3, " ")
             diagonal_array[0] = board_array[ROW["A"]][COL["3"]]
             diagonal_array[1] = board_array[ROW["B"]][COL["2"]]
             diagonal_array[2] = board_array[ROW["C"]][COL["1"]]

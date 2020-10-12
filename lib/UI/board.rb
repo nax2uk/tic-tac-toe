@@ -14,16 +14,19 @@ module UI
     # "C  |   |   |   |"
     # "   +---+---+---+ "
 
+    # row[5]
+    # row[9]
+    # row[13]
+
         def prints_number_coord_row
             puts "     1   2   3  "
-            # puts "     1   2   3  ".bold.blue
         end
 
         def prints_horizontal_board_line
             puts "   +---+---+---+ \n"
         end
 
-        def prints_row(row)
+        def prints_empty_row(row)
             puts "#{row}  |   |   |   | \n"
         end
 
@@ -32,12 +35,19 @@ module UI
         def prints_empty_board
             self.prints_number_coord_row
             self.prints_horizontal_board_line
-            self.prints_row("A")
+            self.prints_empty_row("A")
             self.prints_horizontal_board_line
-            self.prints_row("B")
+            self.prints_empty_row("B")
             self.prints_horizontal_board_line
-            self.prints_row("C")
+            self.prints_empty_row("C")
             self.prints_horizontal_board_line
+        end
+
+        def prints_row(row, row_array)
+            row_string = "#{row}  |   |   |   | \n"
+            row_string[5] = row_array[0]
+            row_string[9] = row_array[1]
+            puts row_string
         end
         # def print_current_board
         #     self.prints_number_coord

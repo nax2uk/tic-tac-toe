@@ -11,7 +11,7 @@ module Logic
 
         # checks if same entry in a line
         def same_entries_in_a_line?(line_array)
-            line_array.uniq.size <= 1 && line_array[0] != ""
+            line_array.uniq.size <= 1 && line_array[0] != " "
         end 
     end
 end
