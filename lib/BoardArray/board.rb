@@ -33,7 +33,7 @@ module BoardArray
 
         def get_column(column)
             column_array = Array.new(3, "") 
-            for i in 0..2 do
+            column_array.each_index do |i|
                 column_array[i] = @board_array[i][COL[column]].dup
             end
             return column_array
