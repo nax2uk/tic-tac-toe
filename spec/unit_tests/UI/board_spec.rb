@@ -45,7 +45,6 @@ describe UI::Board do
                 ui_board.prints_row("A", board_array[0])
             end.to output("A  | O |   |   | \n").to_stdout
         end
-
         it "prints the first row of the board with 2 elements" do
             #Arrange
             board_array = [["O","X"," "],[" "," "," "],[" "," "," "]]
@@ -54,11 +53,36 @@ describe UI::Board do
                 ui_board.prints_row("A", board_array[0])
             end.to output("A  | O | X |   | \n").to_stdout
         end
+        it "prints the first row of the board with 3 elements" do
+            #Arrange
+            board_array = [["O","X","O"],[" "," "," "],[" "," "," "]]
+            #Act & Assert
+            expect do
+                ui_board.prints_row("A", board_array[0])
+            end.to output("A  | O | X | O | \n").to_stdout
+        end
+        it "prints the second row of the board with 3 elements" do
+            #Arrange
+            board_array = [["O", "X", "O"],["X","X","O"],[" "," "," "]]
+            #Act & Assert
+            expect do
+                ui_board.prints_row("B", board_array[1])
+            end.to output("B  | X | X | O | \n").to_stdout
+        end
+    end
+    context "#prints_current_board" do
+        it "" do
+            #Arrange 
+            board_array = [["O", "X", "O"],["X","X","O"],[" "," "," "]]
+            #Act & Assert
+            expect do
+                ui_board.prints_current_board(board_array)
+            end.to output("     1   2   3  \n   +---+---+---+ \nA  | O | X | O | \n   +---+---+---+ \nB  | X | X | O | \n   +---+---+---+ \nC  |   |   |   | \n   +---+---+---+ \n").to_stdout
+        end
     end
 
 end
 
-board_array = [["O","",""],["","",""],["","",""]]
 
 # "     1   2   3  "
 # "   +---+---+---+ "
