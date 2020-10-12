@@ -58,6 +58,9 @@ module Controller
             column_coordinate
         end
 
+        def print_current_board(board)
+            @board.prints_current_board(board)
+        end
     end
 end
 
