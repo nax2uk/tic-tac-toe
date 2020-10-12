@@ -8,7 +8,7 @@ ui_controller = Controller::UIController.new
 
 ui_controller.print_welcome_and_output_instructions
 
-continue = ui_controller.print_continue
+continue = ui_controller.get_continue_and_validate
 ui_controller.print_board_or_exit_game(continue)
 
 
