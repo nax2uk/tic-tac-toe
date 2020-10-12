@@ -19,7 +19,7 @@ module Controller
 
         def print_board_or_exit_game(continue)
             if continue == 'y'
-                @board.prints_empty_board
+                @board.print_empty_board
             elsif continue == 'n'
                 exit(true)
             end
