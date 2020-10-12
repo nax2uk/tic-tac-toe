@@ -11,4 +11,5 @@ ui_controller.print_welcome_and_output_instructions
 continue = ui_controller.get_continue_and_validate
 ui_controller.print_board_or_exit_game(continue)
 
-
+row_coordinate = ui_controller.get_row_coordinate_and_validate
+column_coordinate = ui_controller.get_column_coordinate_and_validate
