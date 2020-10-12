@@ -59,7 +59,7 @@ module Controller
         end
 
         def print_current_board(board)
-            @board.prints_current_board(board)
+            @board.print_current_board(board)
         end
     end
 end

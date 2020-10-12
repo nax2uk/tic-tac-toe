@@ -6,77 +6,77 @@ describe UI::Board do
     context "displays empty board" do
         it "displays number coordinates" do
             expect do
-                ui_board.prints_number_coord_row
+                ui_board.print_number_coord_row
             end.to output("     1   2   3  \n").to_stdout
         end
         it "displays one horizontal line of the board" do
             expect do
-                ui_board.prints_horizontal_board_line
+                ui_board.print_horizontal_board_line
             end.to output("   +---+---+---+ \n").to_stdout
         end
         it "displays row A of the board" do
             expect do
-                ui_board.prints_empty_row("A")
+                ui_board.print_empty_row("A")
             end.to output("A  |   |   |   | \n").to_stdout
         end
         it "displays row B of the board" do
             expect do
-                ui_board.prints_empty_row("B")
+                ui_board.print_empty_row("B")
             end.to output("B  |   |   |   | \n").to_stdout
         end
         it "displays row C of the board" do
             expect do
-                ui_board.prints_empty_row("C")
+                ui_board.print_empty_row("C")
             end.to output("C  |   |   |   | \n").to_stdout
         end
         it "displays a full empty board" do
             expect do
-                ui_board.prints_empty_board
+                ui_board.print_empty_board
             end.to output("     1   2   3  \n   +---+---+---+ \nA  |   |   |   | \n   +---+---+---+ \nB  |   |   |   | \n   +---+---+---+ \nC  |   |   |   | \n   +---+---+---+ \n").to_stdout
         end
     end
 
-    context "#prints_row" do
-        it "prints the first row of the board with 1 element" do
+    context "#print_row" do
+        it "print the first row of the board with 1 element" do
             #Arrange
             board_array = [["O"," "," "],[" "," "," "],[" "," "," "]]
             #Act & Assert
             expect do
-                ui_board.prints_row("A", board_array[0])
+                ui_board.print_row("A", board_array[0])
             end.to output("A  | O |   |   | \n").to_stdout
         end
-        it "prints the first row of the board with 2 elements" do
+        it "print the first row of the board with 2 elements" do
             #Arrange
             board_array = [["O","X"," "],[" "," "," "],[" "," "," "]]
             #Act & Assert
             expect do
-                ui_board.prints_row("A", board_array[0])
+                ui_board.print_row("A", board_array[0])
             end.to output("A  | O | X |   | \n").to_stdout
         end
-        it "prints the first row of the board with 3 elements" do
+        it "print the first row of the board with 3 elements" do
             #Arrange
             board_array = [["O","X","O"],[" "," "," "],[" "," "," "]]
             #Act & Assert
             expect do
-                ui_board.prints_row("A", board_array[0])
+                ui_board.print_row("A", board_array[0])
             end.to output("A  | O | X | O | \n").to_stdout
         end
-        it "prints the second row of the board with 3 elements" do
+        it "print the second row of the board with 3 elements" do
             #Arrange
             board_array = [["O", "X", "O"],["X","X","O"],[" "," "," "]]
             #Act & Assert
             expect do
-                ui_board.prints_row("B", board_array[1])
+                ui_board.print_row("B", board_array[1])
             end.to output("B  | X | X | O | \n").to_stdout
         end
     end
-    context "#prints_current_board" do
+    context "#print_current_board" do
         it "" do
             #Arrange 
             board_array = [["O", "X", "O"],["X","X","O"],[" "," "," "]]
             #Act & Assert
             expect do
-                ui_board.prints_current_board(board_array)
+                ui_board.print_current_board(board_array)
             end.to output("     1   2   3  \n   +---+---+---+ \nA  | O | X | O | \n   +---+---+---+ \nB  | X | X | O | \n   +---+---+---+ \nC  |   |   |   | \n   +---+---+---+ \n").to_stdout
         end
     end
