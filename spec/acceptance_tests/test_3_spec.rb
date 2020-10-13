@@ -18,6 +18,8 @@
 # When: The user enters the location
 # Then: The updated board gets displayed
 
+
+
 # Test 5:
 # Feature: Can see the computer's next move on the board 
 ##### MINIMAX ALGO

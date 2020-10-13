@@ -4,6 +4,7 @@ module BoardArray
 
         def initialize 
             @board_array = Array.new(3) {Array.new(3, " ")} 
+        
         end
 
         ROW = {

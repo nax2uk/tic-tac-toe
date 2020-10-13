@@ -41,7 +41,7 @@ module Controller
             row_coordinate_is_valid = false
 
             until row_coordinate_is_valid
-                row_coordinate = @input_coordinate.input_row_coordinate
+                row_coordinate = @input_coordinate.input_row_coordinate.upcase
                 row_coordinate_is_valid = @input_coordinate.validate_row_coordinate(row_coordinate)
             end
             row_coordinate
