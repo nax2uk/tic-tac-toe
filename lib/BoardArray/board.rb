@@ -22,6 +22,10 @@ module BoardArray
             @board_array[ROW[row]][COL[column]] = symbol
         end
 
+        def get_entry(row, column)
+            @board_array[ROW[row]][COL[column]].dup
+        end
+
         # method created for testing purposes.
         def get_board_row_object_id(row)
             @board_array[ROW[row]].object_id

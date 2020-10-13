@@ -49,6 +49,42 @@ describe BoardArray::Board do
         end
     end
 
+    context "#get_entry" do
+        it "given a board array with an 'X' at (A, 1) returns an 'X'" do
+            # Arrange 
+            board.input_entry("X", "A", "1")
+            # Act
+            # Assert
+            expect(board.get_entry("A","1")).to eq("X")
+        end
+
+        it "given a board array with an 'O' at (C, 2) returns an 'O'" do
+            # Arrange 
+            board.input_entry("X", "A", "1")
+            board.input_entry("O", "A", "2")
+            board.input_entry("X", "B", "3")
+            board.input_entry("O", "C", "2")
+            # Act
+
+            # Assert
+            expect(board.get_entry("C","2")).to eq("O")
+        end
+
+        it "given a board array returns the correct symbol" do
+            # Arrange 
+            board.input_entry("X", "A", "1")
+            board.input_entry("O", "A", "2")
+            board.input_entry("X", "B", "3")
+            board.input_entry("O", "C", "2")
+            # Act
+
+            # Assert
+            expect(board.get_entry("A","1")).to eq("X")
+            expect(board.get_entry("B","3")).to eq("X")
+            expect(board.get_entry("A","2")).to eq("O")
+        end
+    end
+
     context "#get_row" do
         it "returns an array containing entries in row A" do
             expect(board.get_row("A")).to eq([" ", " ", " "])
@@ -201,7 +237,7 @@ describe BoardArray::Board do
             board.input_entry("O", "C", "1")
             expect(board.get_right_diagonal).to eq([" ", "X", "O"])
         end
-
     end
+
 end
 
