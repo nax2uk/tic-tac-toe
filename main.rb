@@ -20,10 +20,13 @@ class Main
         location_is_valid = false
     
             until location_is_valid
-                puts "This space is taken - please put your move somewhere else."
+                
                 row_coordinate = ui_controller.get_row_coordinate_and_validate
                 column_coordinate = ui_controller.get_column_coordinate_and_validate
                 location_is_valid = board_controller.validate_location(row_coordinate, column_coordinate)
+                unless location_is_valid  
+                    puts "This space is taken - please put your move somewhere else."
+                end
             end
         # add board entry once location is valid
         board_controller.add_user_entry(row_coordinate, column_coordinate)
@@ -32,6 +35,7 @@ class Main
     end
 
     Main.user_turn(ui_controller, board_controller)
+
    
 end
 
