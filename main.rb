@@ -17,7 +17,6 @@ class Main
     
     def self.user_turn(ui_controller, board_controller)
         # user inputs coordinate
-
         location_is_valid = false
     
             until location_is_valid
