@@ -1,7 +1,7 @@
 module UI
     class InputCoordinate
         def input_row_coordinate
-            puts "Please input row coordinate of 'O':"
+            print "Please input row coordinate of 'O':"
             gets.chomp
         end
 
