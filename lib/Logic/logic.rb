@@ -13,5 +13,9 @@ module Logic
         def same_entries_in_a_line?(line_array)
             line_array.uniq.size <= 1 && line_array[0] != " "
         end 
+
+        def validate_entry(row, column, board)
+            board.get_entry(row, column) == " "
+        end
     end
 end

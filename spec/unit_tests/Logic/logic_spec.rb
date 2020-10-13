@@ -129,4 +129,30 @@ describe Logic::BoardLogic do
             expect(logic.has_won?("C", "1", board)).to eq(true)
         end
     end
+    context "#validate_entry" do
+        it "returns true given a board with an empty space at (A, 1)" do
+            # Arrange
+            row = "A"
+            column = "1"
+            # Act
+            expect(logic.validate_entry(row, column, board)).to eq(true)
+        end
+
+        it "returns true given a board with an empty space at (B, 1)" do
+            # Arrange
+            row = "B"
+            column = "1"
+            # Act
+            expect(logic.validate_entry(row, column, board)).to eq(true)
+        end
+
+        it "returns false given a board without a empty space at (A, 2)" do
+            # Arrange
+            board.input_entry("X", "A", "2")
+            row = "A"
+            column = "2"
+            # Act
+            expect(logic.validate_entry(row, column, board)).to eq(false)
+        end
+    end
 end
