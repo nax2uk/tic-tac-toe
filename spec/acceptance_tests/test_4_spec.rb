@@ -18,7 +18,6 @@ describe "AC Test 4: User wants to input the location of the next move" do
             board_controller = Controller::BoardController.new
 
             # Act
-        
             allow(ui_controller).to receive(:get_row_coordinate_and_validate).and_return('A\n')
             allow(ui_controller).to receive(:get_column_coordinate_and_validate).and_return('1\n')
             board_controller.add_user_entry("A", "1")
