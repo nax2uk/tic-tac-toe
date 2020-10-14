@@ -4,7 +4,7 @@ module UI
         include CaptureInput
     
         def validate_input(input)
-            if input.downcase == 'y' || input.downcase =='n'
+            if input == 'Y' || input =='N'
                 return true
             else
                 print "Please enter 'y' or 'n'!\n"
