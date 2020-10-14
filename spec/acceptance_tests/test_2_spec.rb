@@ -2,8 +2,7 @@
 # Given: A user has started the game and read the instructions
 # When: the user the inputs "y" to continue.
 # Then: an empty board will appear.
-require './lib/UI/continue_message'
-require './lib/UI/board'
+require './lib/Controller/ui_controller'
 
 describe "AC Test 2: User has read the instructions and wants to continue with the game" do
     context "After user inputs 'y' to continue" do
