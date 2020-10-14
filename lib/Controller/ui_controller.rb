@@ -23,6 +23,11 @@ module Controller
             @standard_messages.output_instructions
         end
 
+        def print_message(message_string)
+            @standard_messages.output_message(message_string)
+
+        end
+
         def print_board_or_exit_game(continue)
             if continue == 'Y'
                 @board.print_empty_board

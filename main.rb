@@ -23,7 +23,7 @@ class Main
                 column_coordinate = ui_controller.get_input_and_validate("Please input column coordinate of 'O':", ui_controller.column_coordinate)
                 location_is_valid = board_controller.validate_location(row_coordinate, column_coordinate)
                 unless location_is_valid  
-                    puts "This space is taken - please put your move somewhere else."
+                    ui_controller.print_message("This space is taken - please put your move somewhere else.")
                 end
             end
         # add board entry once location is valid
@@ -41,11 +41,11 @@ class Main
 
     end
     if board_controller.game_score == -1
-        puts "Well done, you have won!"
+        ui_controller.print_message("Well done, you have won!")
     elsif board_controller.game_score == 1
-        puts "Too bad you lose!"
+        ui_controller.print_message("Too bad you lose!")
     else
-        puts "Wow! It is a draw"
+        ui_controller.print_message("Wow! It is a draw")
     end
 
 end

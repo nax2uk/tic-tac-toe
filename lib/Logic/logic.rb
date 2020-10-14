@@ -37,6 +37,17 @@ module Logic
             board.get_entry(row, column) == " "
         end
 
+    
+
+        def board_is_full?(board)
+            for row in 0..2 do
+                if board.board_array[row].include?(" ")
+                    return false
+                end
+            end
+            return true
+        end
+
         def get_best_move(board)
             best_score = -10000
             best_move = ["A","1"]
@@ -62,14 +73,22 @@ module Logic
             return best_move
         end
 
-        def board_is_full?(board)
-            for row in 0..2 do
-                if board.board_array[row].include?(" ")
-                    return false
-                end
+        def minimax(symbol, row, column, board, depth, isMaximising)
+
+            # base case / leaf node
+            result = self.calculate_score_if_game_ends(symbol, row, column, board)
+            if result
+                score = result
+                return score
             end
-            return true
+
+            if isMaximising
+                return maximising_score(row, column, board, depth)
+            else
+                return minimising_score(row, column, board, depth)
+            end
         end
+
 
         def calculate_score_if_game_ends(symbol, row, column, board)
             
@@ -80,51 +99,41 @@ module Logic
             return 0 if self.board_is_full?(board)
         end
 
-        def minimax(symbol, row, column, board, depth, isMaximising)
-
-            result = self.calculate_score_if_game_ends(symbol, row, column, board)
-            if result
-                score = result
-                return score
-            end
-
-            if isMaximising
-                best_score = -10000
-                symbol = 'X'
-                for row in 0..2 do
-                    for column in 0..2 do
-                        if self.validate_entry(ROW[row], COL[column], board)
-                            board.input_entry(symbol, ROW[row], COL[column])
-                            score = self.minimax(symbol, ROW[row], COL[column], board, depth+1, false)
-                            board.remove_entry(ROW[row], COL[column])
-                            if score > best_score
-                                best_score = score  
-                            end
+        def minimising_score(row, column, board, depth)
+            best_score = 10000
+            symbol = 'O'
+            for row in 0..2 do
+                for column in 0..2 do
+                    if self.validate_entry(ROW[row], COL[column], board)
+                        board.input_entry(symbol, ROW[row], COL[column])
+                        score = self.minimax(symbol, ROW[row], COL[column], board, depth+1, true)
+                        board.remove_entry(ROW[row], COL[column])
+                        if score < best_score
+                            best_score = score  
                         end
                     end
                 end
-                return best_score
-            else
-                best_score = 10000
-                symbol = 'O'
-                for row in 0..2 do
-                    for column in 0..2 do
-                        if self.validate_entry(ROW[row], COL[column], board)
-                            board.input_entry(symbol, ROW[row], COL[column])
-                            score = self.minimax(symbol, ROW[row], COL[column], board, depth+1, true)
-                            board.remove_entry(ROW[row], COL[column])
-                            if score < best_score
-                                best_score = score  
-                            end
-                        end
-                    end
-                end
-                return best_score
             end
+            return best_score
         end
 
-
-
+        def maximising_score(row, column, board, depth)
+            best_score = -10000
+            symbol = 'X'
+            for row in 0..2 do
+                for column in 0..2 do
+                    if self.validate_entry(ROW[row], COL[column], board)
+                        board.input_entry(symbol, ROW[row], COL[column])
+                        score = self.minimax(symbol, ROW[row], COL[column], board, depth+1, false)
+                        board.remove_entry(ROW[row], COL[column])
+                        if score > best_score
+                            best_score = score  
+                        end
+                    end
+                end
+            end
+            return best_score
+        end
 
     end
 end

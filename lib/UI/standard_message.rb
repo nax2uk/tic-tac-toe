@@ -19,6 +19,10 @@ module UI
 
             HEREDOC
         end
+
+        def output_message(message_string)
+            puts message_string
+        end
     end
 end
     
