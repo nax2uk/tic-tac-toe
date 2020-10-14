@@ -2,9 +2,9 @@ module Logic
     class BoardLogic
 
         ROW = {
-                0  => 'A',
-                1  => 'B',
-                2  => 'C',
+            0  => 'A',
+            1  => 'B',
+            2  => 'C',
                
         }.freeze
 
@@ -33,7 +33,7 @@ module Logic
 
         def board_is_full?(board)
             for row in 0..2 do
-                if board.board_array[row].include?(" ")
+                if board.get_row(ROW[row]).include?(" ")
                     return false
                 end
             end
@@ -68,6 +68,7 @@ module Logic
             score = self.calculate_score_if_game_ends(symbol, row, column, board)
             return score if score
 
+            # recursive case
             if next_turn_is_maximising
                 return maximising_score(row, column, board, depth)
             else
