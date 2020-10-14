@@ -5,57 +5,63 @@ require './lib/BoardArray/board'
 require './lib/Logic/logic'
 module Controller
     class BoardController
-        attr_reader :game_score
+        attr_reader :game_score, :game_is_won
         def initialize
             @board = BoardArray::Board.new
             @board_logic = Logic::BoardLogic.new
             @game_score = 100
-        end
-
-        def add_user_entry(row, column)
-            @board.input_entry('O', row, column)
+            @game_is_won = false
         end
 
         def get_board
             @board.board_array
         end
 
-        def is_board_full?
-            board_is_full = @board_logic.board_is_full?(@board)
-            if board_is_full
-                @board_logic.game_has_ended = true
-                @game_score = 0  
-            end
-            board_is_full
-        end
         def validate_location(row, column)
             @board_logic.validate_entry(row, column, @board)
         end
-        
-        def has_user_won?(row, column)
-            user_has_won = @board_logic.has_won?(row, column, @board)
+
+        def add_user_entry_and_check_if_user_won(row, column)
+            self.add_user_entry(row, column)
+            
+            user_has_won = self.has_user_won?(row, column)
             if user_has_won
-                @board_logic.game_has_ended = true
-                @game_score = -1           
+                self.set_game_is_won_and_score(-1)
             end
-            user_has_won
         end
-    
-        def get_computer_turn
+  
+        def add_computer_entry_and_check_if_computer_won
             best_move = @board_logic.get_best_move(@board)
             
-            row = best_move[0] 
-            column = best_move[1]
-            @board.input_entry('X',row, column)
+            row, column = best_move[0] , best_move[1]
+            self.add_computer_entry(row, column)
+            computer_has_won = self.has_computer_won?(row, column)
 
-            if @board_logic.has_won?(row, column, @board)
-                @board_logic.game_has_ended = true
-                @game_score = 1
+            if computer_has_won
+                self.set_game_is_won_and_score(1)
             end
         end    
 
-        def game_has_ended
-            @board_logic.game_has_ended
+        def set_game_is_won_and_score(score)
+            @game_is_won = true
+            @game_score = score
         end
+
+        def add_user_entry(row, column)
+            @board.input_entry('O', row, column)
+        end
+        def has_user_won?(row, column)
+          @board_logic.has_won?(row, column, @board)
+        end
+
+        def add_computer_entry(row, column)
+            @board.input_entry('X', row, column)
+        end
+        def has_computer_won?(row, column)
+            @board_logic.has_won?(row, column, @board)
+        end
+
+
+
     end
 end

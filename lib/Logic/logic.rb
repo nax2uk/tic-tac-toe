@@ -14,11 +14,6 @@ module Logic
             2  => '3',
         }.freeze 
 
-        attr_accessor  :game_has_ended
-
-        def initialize
-            @game_has_ended = false
-        end
 
         def has_won?(row, column, board)
             same_entries_in_a_line?(board.get_row(row)) ||
@@ -33,11 +28,8 @@ module Logic
         end 
 
         def validate_entry(row, column, board)
-
             board.get_entry(row, column) == " "
         end
-
-    
 
         def board_is_full?(board)
             for row in 0..2 do
@@ -53,20 +45,16 @@ module Logic
             best_move = ["A","1"]
             symbol='X'
 
-            
             for row in 0..2 do
                 for column in 0..2 do
                     if self.validate_entry(ROW[row], COL[column], board)
-                            board.input_entry(symbol, ROW[row], COL[column])
-                            score = self.minimax(symbol, ROW[row], COL[column], board, 0, false)
-                            board.remove_entry(ROW[row], COL[column])
-                            if score > best_score
-                                best_move[0]= ROW[row] 
-                                best_move[1] = COL[column]
-                                best_score = score
-                            end
-                            
-                          
+                        board.input_entry(symbol, ROW[row], COL[column])
+                        score = self.minimax(symbol, ROW[row], COL[column], board, 0, false)
+                        board.remove_entry(ROW[row], COL[column])
+                        if score > best_score
+                            best_move[0], best_move[1] = ROW[row], COL[column]
+                            best_score = score
+                        end
                     end
                 end
             end
@@ -77,11 +65,8 @@ module Logic
         def minimax(symbol, row, column, board, depth, next_turn_is_maximising)
 
             # base case / leaf node
-            result = self.calculate_score_if_game_ends(symbol, row, column, board)
-            if result
-                score = result
-                return score
-            end
+            score = self.calculate_score_if_game_ends(symbol, row, column, board)
+            return score if score
 
             if next_turn_is_maximising
                 return maximising_score(row, column, board, depth)

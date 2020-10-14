@@ -1,6 +1,6 @@
 module BoardArray
     class Board 
-        attr_accessor :board_array
+        attr_reader :board_array
 
         def initialize 
             @board_array = Array.new(3) {Array.new(3, " ")} 
