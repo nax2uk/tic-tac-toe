@@ -1,15 +1,21 @@
 require './lib/UI/standard_message'
 require './lib/UI/board'
 require './lib/UI/continue_message'
-require './lib/UI/input_coordinate'
+require './lib/UI/row_coordinate'
+require './lib/UI/column_coordinate'
+
 
 module Controller
     class UIController
+        attr_reader :continue_message, :row_coordinate, :column_coordinate
+
         def initialize
             @standard_messages = UI::StandardMessage.new
             @board = UI::Board.new
             @continue_message = UI::ContinueMessage.new
-            @input_coordinate = UI::InputCoordinate.new
+            @row_coordinate = UI::RowCoordinate.new
+            @column_coordinate = UI::ColumnCoordinate.new
+
         end
 
         def print_welcome_and_output_instructions
@@ -25,42 +31,21 @@ module Controller
             end
         end
 
-        def get_continue_and_validate
-            continue = ''
-            continue_is_valid = false
+        def get_input_and_validate(prompt_string, input_type)
+            # input_type : row_coord, column_coord, continue etc
+            input = ''
+            input_is_valid = false
 
-            until continue_is_valid
-                continue = @continue_message.capture_input
-                continue_is_valid = @continue_message.validate_input(continue)
+            until input_is_valid
+                input = input_type.capture_input(prompt_string).upcase
+                input_is_valid = input_type.validate_input(input)
             end
-            continue
+            input
         end
 
-        def get_row_coordinate_and_validate
-            row_coordinate = ''
-            row_coordinate_is_valid = false
-
-            until row_coordinate_is_valid
-                row_coordinate = @input_coordinate.input_row_coordinate.upcase
-                row_coordinate_is_valid = @input_coordinate.validate_row_coordinate(row_coordinate)
-            end
-            row_coordinate
-        end
-
-        def get_column_coordinate_and_validate
-            column_coordinate = ''
-            column_coordinate_is_valid = false
-
-            until column_coordinate_is_valid
-                column_coordinate = @input_coordinate.input_column_coordinate
-                column_coordinate_is_valid = @input_coordinate.validate_column_coordinate(column_coordinate)
-            end
-            column_coordinate
-        end
-
+    
         def print_current_board(board)
             @board.print_current_board(board)
         end
     end
 end
-

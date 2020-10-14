@@ -11,7 +11,7 @@ class Main
 
     ui_controller.print_welcome_and_output_instructions
 
-    continue = ui_controller.get_continue_and_validate
+    continue = ui_controller.get_input_and_validate("Do you want to continue? y/n: ", ui_controller.continue_message)
     ui_controller.print_board_or_exit_game(continue)
     
     
@@ -21,8 +21,8 @@ class Main
     
             until location_is_valid
                 
-                row_coordinate = ui_controller.get_row_coordinate_and_validate
-                column_coordinate = ui_controller.get_column_coordinate_and_validate
+                row_coordinate = ui_controller.get_input_and_validate("Please input row coordinate of 'O':", ui_controller.row_coordinate)
+                column_coordinate = ui_controller.get_input_and_validate("Please input column coordinate of 'O':", ui_controller.column_coordinate)
                 location_is_valid = board_controller.validate_location(row_coordinate, column_coordinate)
                 unless location_is_valid  
                     puts "This space is taken - please put your move somewhere else."
