@@ -21,6 +21,14 @@ module Controller
             @board.board_array
         end
 
+        def is_board_full?
+            board_is_full = @board_logic.board_is_full?(@board)
+            if board_is_full
+                @board_logic.game_has_ended = true
+                @game_score = 0  
+            end
+            board_is_full
+        end
         def validate_location(row, column)
             @board_logic.validate_entry(row, column, @board)
         end
@@ -29,10 +37,7 @@ module Controller
             user_has_won = @board_logic.has_won?(row, column, @board)
             if user_has_won
                 @board_logic.game_has_ended = true
-                @game_score = -1
-            elsif @board_logic.board_is_full?(@board)
-                @board_logic.game_has_ended = true
-                @game_score = 0  
+                @game_score = -1           
             end
             user_has_won
         end

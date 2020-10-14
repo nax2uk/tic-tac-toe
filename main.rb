@@ -32,8 +32,9 @@ class Main
         ui_controller.print_current_board(current_board)
 
         user_has_won = board_controller.has_user_won?(row_coordinate, column_coordinate)
+        board_is_full = board_controller.is_board_full?
  
-        unless user_has_won
+        unless user_has_won || board_is_full
             board_controller.get_computer_turn
             current_board = board_controller.get_board
             ui_controller.print_current_board(current_board)

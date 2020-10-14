@@ -53,6 +53,7 @@ module Logic
             best_move = ["A","1"]
             symbol='X'
 
+            
             for row in 0..2 do
                 for column in 0..2 do
                     if self.validate_entry(ROW[row], COL[column], board)
@@ -73,7 +74,7 @@ module Logic
             return best_move
         end
 
-        def minimax(symbol, row, column, board, depth, isMaximising)
+        def minimax(symbol, row, column, board, depth, next_turn_is_maximising)
 
             # base case / leaf node
             result = self.calculate_score_if_game_ends(symbol, row, column, board)
@@ -82,7 +83,7 @@ module Logic
                 return score
             end
 
-            if isMaximising
+            if next_turn_is_maximising
                 return maximising_score(row, column, board, depth)
             else
                 return minimising_score(row, column, board, depth)
