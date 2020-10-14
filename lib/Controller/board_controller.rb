@@ -24,15 +24,5 @@ module Controller
             @board_logic.validate_entry(row, column, @board)
         end
 
-        # def validate_location(row, column)
-        #     coordinate_location_is_valid = false
-
-        #     until coordinate_location_is_valid
-        #         column_coordinate_is_valid = @board_logic.validate_entry(row, column)
-        #     end
-        #     column_coordinate
-         
-        # end
-
     end
 end

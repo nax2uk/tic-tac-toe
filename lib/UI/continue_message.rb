@@ -1,10 +1,7 @@
+require './lib/Helper/capture_input'
 module UI
     class ContinueMessage
-
-        def capture_input
-            print "Do you want to continue? y/n: "
-            gets.chomp
-        end
+        include CaptureInput
     
         def validate_input(input)
             if input.downcase == 'y' || input.downcase =='n'

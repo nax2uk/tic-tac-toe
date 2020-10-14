@@ -5,8 +5,9 @@ describe UI::ContinueMessage do
 
         context "after asking 'do you want to continue?'" do
             it "accepts an input" do
+                prompt_string = "Do you want to continue? y/n: "
                 allow(ui_continue_message).to receive(:gets).and_return("y\n")
-                expect(ui_continue_message.capture_input).to eq("y")
+                expect(ui_continue_message.capture_input(prompt_string)).to eq("y")
             end
         end
     end
