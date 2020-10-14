@@ -33,10 +33,10 @@ describe UI::StandardMessage do
     end
 
 
-    context "after user has read the instructions" do
-        xit "can take a user input" do
+    # context "after user has read the instructions" do
+    #     xit "can take a user input" do
        
-        end
-    end
+    #     end
+    # end
 
 end

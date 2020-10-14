@@ -4,32 +4,28 @@
 # When: When the user wants to start the game on the command line
 # Then: A welcome and instructions will appear.
 
-require './lib/UI/standard_message'
+require './lib/Controller/ui_controller'
 
 describe "AC Test 1: User starts a game" do
     context "at the start of the game" do
-        standard_message = UI::StandardMessage.new
-        it "displays a welcome message" do
+        ui_controller = Controller::UIController.new
+        it "displays a welcome message and instructions" do
             expect do
-                standard_message.output_welcome_message
-            end.to output("Welcome to Tic Tac Toe!\n\n").to_stdout
-        end
+                ui_controller.print_welcome_and_output_instructions
+            end.to output(        
+            <<~HEREDOC
+            Welcome to Tic Tac Toe!
 
-        it "displays instructions" do
-            expect do
-                standard_message.output_instructions
-            end.to output(
-                <<~HEREDOC
-                Instructions:
-                
-                The game is played on a 3x3 grid.
-                You are X, your opponent is O. Players take turns putting their marks in empty squares.
-                The first player to get 3 of their marks in a row (up, down, across, or diagonally) is the winner.
-                If all 9 squares are full and no player has 3 marks in a row, the game is over.
-                
-                
-                HEREDOC
-                ).to_stdout
+            Instructions:
+            
+            The game is played on a 3x3 grid.
+            You are X, your opponent is O. Players take turns putting their marks in empty squares.
+            The first player to get 3 of their marks in a row (up, down, across, or diagonally) is the winner.
+            If all 9 squares are full and no player has 3 marks in a row, the game is over.
+            
+            
+            HEREDOC
+            ).to_stdout
         end
     end
 end

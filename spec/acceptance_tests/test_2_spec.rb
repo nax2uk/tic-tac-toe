@@ -7,18 +7,15 @@ require './lib/UI/board'
 
 describe "AC Test 2: User has read the instructions and wants to continue with the game" do
     context "After user inputs 'y' to continue" do
-        xit "displays an empty board" do
-            continue_message = UI::ContinueMessage.new
-            # board = UI::Board.new
-            allow(continue_message).to receive(:gets).and_return("y\n")
-            # ui.stub(:gets).and_return("y\n")
-            expect(continue_message.capture_input).to eq("y")
-            expect do
-                #method which asks the user if user wants to continue and prints out the empty board if the input is yes.
-                # continue("y")
-            end.to output("     1   2   3  \n   +---+---+---+ \nA  |   |   |   | \n   +---+---+---+ \nB  |   |   |   | \n   +---+---+---+ \nC  |   |   |   | \n   +---+---+---+ \n").to_stdout
+        it "displays an empty board" do
+            ui_controller = Controller::UIController.new
+            continue = "y"
+            # Act
+            # Assert
+            expect{ui_controller.print_board_or_exit_game(continue)}.to output("     1   2   3  \n   +---+---+---+ \nA  |   |   |   | \n   +---+---+---+ \nB  |   |   |   | \n   +---+---+---+ \nC  |   |   |   | \n   +---+---+---+ \n").to_stdout
         end
     end
 end
+
 
 

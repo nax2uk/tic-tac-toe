@@ -5,7 +5,6 @@
 # Given: "Choose a location for 'O'" is displayed
 # When: The user enters the location
 # Then: The updated board gets displayed
-require './lib/UI/input_coordinate'
 require './lib/Controller/ui_controller'
 require './lib/Controller/board_controller'
 

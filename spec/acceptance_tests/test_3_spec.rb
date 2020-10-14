@@ -9,25 +9,23 @@
 # Given: "Do you want to continue? y/n" is displayed,
 # When: the user the inputs "n"
 # Then: the game exits
+require './lib/Controller/ui_controller'
 
-# Test 4: 
-# Feature: Enables user to choose the location of their next move
-# Enables user to have the first turn and choose a location
-# Scenario: The game will ask the user where to put their entry, "O".
-# Given: "Choose a location for 'O'" is displayed
-# When: The user enters the location
-# Then: The updated board gets displayed
+describe "AC Test 3: User decided not to continue the game" do
+    context "The game will ask the user 'Do you want to continue? y/n'" do
+
+        it "given the user the inputs 'n', the game exits" do
+            # Arrange
+            ui_controller = Controller::UIController.new
+            continue = "n"
+            # Act
+            # Assert
+            expect{ui_controller.print_board_or_exit_game(continue)}.to raise_error(SystemExit)
+        end
+    end
+end
+            
 
 
 
-# Test 5:
-# Feature: Can see the computer's next move on the board 
-##### MINIMAX ALGO
 
-# Test 6:
-# Feature: To be told if the user has won, lost, or drawn the game
-#
-
-# Test 7:
-# Feature: Can play the game multiple times in a row after user or computer has won
-#
