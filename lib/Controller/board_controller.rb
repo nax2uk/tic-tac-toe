@@ -13,8 +13,7 @@ module Controller
         end
 
         def add_user_entry(row, column)
-            symbol = "O"
-            @board.input_entry(symbol, row, column)
+            @board.input_entry('O', row, column)
         end
 
         def get_board
@@ -53,7 +52,7 @@ module Controller
                 @board_logic.game_has_ended = true
                 @game_score = 1
             end
-        end
+        end    
 
         def game_has_ended
             @board_logic.game_has_ended
