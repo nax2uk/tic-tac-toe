@@ -8,7 +8,7 @@ describe "AC Test 2: User has read the instructions and wants to continue with t
     context "After user inputs 'y' to continue" do
         it "displays an empty board" do
             ui_controller = Controller::UIController.new
-            continue = "y"
+            continue = "Y"
             # Act
             # Assert
             expect{ui_controller.print_board_or_exit_game(continue)}.to output("     1   2   3  \n   +---+---+---+ \nA  |   |   |   | \n   +---+---+---+ \nB  |   |   |   | \n   +---+---+---+ \nC  |   |   |   | \n   +---+---+---+ \n").to_stdout

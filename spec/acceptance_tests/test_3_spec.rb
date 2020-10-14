@@ -17,7 +17,7 @@ describe "AC Test 3: User decided not to continue the game" do
         it "given the user the inputs 'n', the game exits" do
             # Arrange
             ui_controller = Controller::UIController.new
-            continue = "n"
+            continue = "N"
             # Act
             # Assert
             expect{ui_controller.print_board_or_exit_game(continue)}.to raise_error(SystemExit)

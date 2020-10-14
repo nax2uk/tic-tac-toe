@@ -14,11 +14,9 @@ class Main
     continue = ui_controller.get_input_and_validate("Do you want to continue? y/n: ", ui_controller.continue_message)
     ui_controller.print_board_or_exit_game(continue)
     
-    
-    def self.user_turn(ui_controller, board_controller)
-        # user inputs coordinate
+    until board_controller.game_has_ended
         location_is_valid = false
-    
+
             until location_is_valid
                 
                 row_coordinate = ui_controller.get_input_and_validate("Please input row coordinate of 'O':", ui_controller.row_coordinate)
@@ -32,11 +30,23 @@ class Main
         board_controller.add_user_entry(row_coordinate, column_coordinate)
         current_board = board_controller.get_board
         ui_controller.print_current_board(current_board)
+
+        user_has_won = board_controller.has_user_won?(row_coordinate, column_coordinate)
+ 
+        unless user_has_won
+            board_controller.get_computer_turn
+            current_board = board_controller.get_board
+            ui_controller.print_current_board(current_board)
+        end
+
+    end
+    if board_controller.game_score == -1
+        puts "Well done, you have won!"
+    elsif board_controller.game_score == 1
+        puts "Too bad you lose!"
+    else
+        puts "Wow! It is a draw"
     end
 
-    Main.user_turn(ui_controller, board_controller)
-
-   
 end
-
 

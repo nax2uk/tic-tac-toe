@@ -6,8 +6,8 @@ describe UI::ContinueMessage do
         context "after asking 'do you want to continue?'" do
             it "accepts an input" do
                 prompt_string = "Do you want to continue? y/n: "
-                allow(ui_continue_message).to receive(:gets).and_return("y\n")
-                expect(ui_continue_message.capture_input(prompt_string)).to eq("y")
+                allow(ui_continue_message).to receive(:gets).and_return("Y\n")
+                expect(ui_continue_message.capture_input(prompt_string)).to eq("Y")
             end
         end
     end
@@ -15,8 +15,8 @@ describe UI::ContinueMessage do
     context "#validate_input" do
         context "" do
             it "returns true if it is a 'y' or 'n'" do
-                expect(ui_continue_message.validate_input("y")).to eq(true)
-                expect(ui_continue_message.validate_input("n")).to eq(true)
+                expect(ui_continue_message.validate_input("Y")).to eq(true)
+                expect(ui_continue_message.validate_input("N")).to eq(true)
             end
             it "returns false if it is not a 'y' or 'n'" do
                 expect(ui_continue_message.validate_input("a")).to eq(false)
