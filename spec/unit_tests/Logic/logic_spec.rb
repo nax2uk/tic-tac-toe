@@ -238,7 +238,6 @@ describe Logic::BoardLogic do
             board.input_entry('X',"A","1")
             board.input_entry('O',"C","3")
 
-
             #Act
             symbol = 'O'
             row = "C"
@@ -250,7 +249,6 @@ describe Logic::BoardLogic do
         end
         it "given that board is full if computer puts an entry, returns 1 if computer wins" do
             # Arrange
-            
             board.input_entry('O',"A","2")
             board.input_entry('X',"B","2")
             board.input_entry('O',"C","1")
@@ -272,15 +270,12 @@ describe Logic::BoardLogic do
         end
         it "given that computer puts an entry on board but does not win  and board still has available spaces, return nil" do
             # Arrange
-            
             board.input_entry('O',"A","2")
             board.input_entry('X',"B","2")
             board.input_entry('O',"C","1")
             board.input_entry('X',"B","1")
             board.input_entry('O',"B","3")
   
-
-
             #Act
             symbol = 'X'
             row = "A"
