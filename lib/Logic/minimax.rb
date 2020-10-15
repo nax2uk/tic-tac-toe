@@ -13,11 +13,10 @@ module Logic
                 '3'=> 2
         }.freeze 
 
-        def best_move(board)
+        def best_move(board, board_logic)
             for row in 0..2
                 for col in 0..2
-                    if board.board_array[row][col] == " "
-              
+                    if board_logic.validate_entry(ROW.key(row), COL.key(col), board)
                         return [ROW.key(row), COL.key(col)]
                     end
                 end
