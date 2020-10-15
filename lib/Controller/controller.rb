@@ -1,0 +1,3 @@
+class TopController < Controller
+    
+end
