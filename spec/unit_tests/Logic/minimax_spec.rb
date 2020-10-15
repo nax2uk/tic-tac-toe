@@ -38,37 +38,46 @@ describe Logic::Minimax do
     end
 
     context "#minimax_score" do
-        it "returns a score of -1 when 'O' has won the game" do
-            # Arrange/Act 
+        it "given the last empty space, returns a score of -1 when the game is won by O" do
+            # Arrange
             board.input_entry('O',"A","1")
             board.input_entry('X',"A","2")
             board.input_entry('X',"A","3")
             board.input_entry('O',"B","1")
             board.input_entry('X',"B","2")
             board.input_entry('X',"B","3")
-            board.input_entry('O',"C","1")
             board.input_entry('O',"C","2")
             board.input_entry('O',"C","3")
+            
+            # Act 
             row = "C"
             column = "1"
             depth = 0
+
+            board.input_entry('O',"C","1")
             # Assert
+            
             expect(minimax.minimax_score(board, board_logic, row, column, depth)).to eq([-1, 0])
         end
-        it "given the last empty space, returns a score of 0, user puts an entry and the game is drawn" do
-            # Arrange/Act 
+
+        it "given the last empty space, returns a score of 0 when the game is drawn" do
+            # Arrange
             board.input_entry('O',"A","1")
             board.input_entry('X',"A","2")
             board.input_entry('O',"A","3")
             board.input_entry('X',"B","1")
             board.input_entry('X',"B","2")
             board.input_entry('O',"B","3")
-            board.input_entry('O',"C","1")
             board.input_entry('O',"C","2")
             board.input_entry('X',"C","3")
+
+            # Act
             row = "C"
             column = "1"
             depth = 0
+
+            board.input_entry('O',row, column)
+            
             # Assert
             expect(minimax.minimax_score(board, board_logic, row, column, depth)).to eq([0, 0])
         end
