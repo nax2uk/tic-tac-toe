@@ -49,8 +49,28 @@ describe Logic::Minimax do
             board.input_entry('O',"C","1")
             board.input_entry('O',"C","2")
             board.input_entry('O',"C","3")
+            row = "C"
+            column = "1"
+            depth = 0
             # Assert
-            expect(minimax.minimax_score(board, board_logic)).to eq(-1)
+            expect(minimax.minimax_score(board, board_logic, row, column, depth)).to eq([-1, 0])
+        end
+        it "given the last empty space, returns a score of 0, user puts an entry and the game is drawn" do
+            # Arrange/Act 
+            board.input_entry('O',"A","1")
+            board.input_entry('X',"A","2")
+            board.input_entry('O',"A","3")
+            board.input_entry('X',"B","1")
+            board.input_entry('X',"B","2")
+            board.input_entry('O',"B","3")
+            board.input_entry('O',"C","1")
+            board.input_entry('O',"C","2")
+            board.input_entry('X',"C","3")
+            row = "C"
+            column = "1"
+            depth = 0
+            # Assert
+            expect(minimax.minimax_score(board, board_logic, row, column, depth)).to eq([0, 0])
         end
     end
 end
