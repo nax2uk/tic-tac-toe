@@ -23,6 +23,18 @@ module Logic
             end
         end
         
-    end
 
+
+        def minimax_score(board, board_logic)
+            -1
+        end
+
+    # def minimax_score(symbol,row, column, board, board_logic)
+    #     if board_logic.has_won?(row, column, board)
+    #         return -1 if symbol == 'O'
+    #         return 1 if symbol == 'X'
+    #     end
+    # end
+
+    end
 end
