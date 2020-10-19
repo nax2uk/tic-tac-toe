@@ -155,4 +155,36 @@ describe Logic::BoardLogic do
             expect(logic.validate_entry(row, column, board)).to eq(false)
         end
     end
+    context "is_board_full?" do
+        it "returns false given a board is not full" do
+            # Arrange
+            board.input_entry('X',"A","1")   # [X, X, O]
+            board.input_entry('X',"A","2")   # [O, X, O]
+            board.input_entry('O',"A","3")   # [ , O,  ]
+            board.input_entry('O',"B","1")
+            board.input_entry('X',"B","2")
+            board.input_entry('O',"B","3")
+            board.input_entry('O',"C","2")
+            # Act
+
+            # Assert
+            expect(logic.is_board_full?(board)).to eq(false)
+        end
+        it "returns true given a board is not full" do
+            # Arrange
+            board.input_entry('X',"A","1")   # [X, X, O]
+            board.input_entry('X',"A","2")   # [O, X, O]
+            board.input_entry('O',"A","3")   # [O, O, X]
+            board.input_entry('O',"B","1")
+            board.input_entry('X',"B","2")
+            board.input_entry('O',"B","3")
+            board.input_entry('O',"C","1")
+            board.input_entry('O',"C","2")
+            board.input_entry('X',"C","3")
+            # Act
+
+            # Assert
+            expect(logic.is_board_full?(board)).to eq(true)
+        end
+    end
 end

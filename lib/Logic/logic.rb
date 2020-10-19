@@ -17,5 +17,12 @@ module Logic
         def validate_entry(row, column, board)
             board.get_entry(row, column) == " "
         end
+
+        def is_board_full?(board)
+            board.board_array.each do |row|
+                return false if row.include?(" ")
+            end
+            return true
+        end
     end
 end

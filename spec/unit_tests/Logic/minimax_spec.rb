@@ -49,6 +49,33 @@ describe Logic::Minimax do
             # Assert
             expect(minimax.best_move(board, board_logic)).to eq(["C","3"])
         end
+        it "returns move to draw to prevent O to winning, when there are two spaces left." do
+            # Arrange && Act
+            board.input_entry('X',"A","1")   # [X, X, O]
+            board.input_entry('X',"A","2")   # [O, X, O]
+            board.input_entry('O',"A","3")   # [ , O,  ]
+            board.input_entry('O',"B","1")
+            board.input_entry('X',"B","2")
+            board.input_entry('O',"B","3")
+            board.input_entry('O',"C","2")
+        
+            # Assert
+            expect(minimax.best_move(board, board_logic)).to eq(["C","3"])
+        end
+
+        # it "returns move to draw to prevent O to winning, when there are two spaces left." do
+        #     # Arrange && Act
+        #     board.input_entry('X',"A","1")   # [X, X, O]
+        #     board.input_entry('X',"A","2")   # [O, X, O]
+        #     board.input_entry('O',"A","3")   # [ , O,  ]
+        #     board.input_entry('O',"B","1")
+        #     board.input_entry('X',"B","2")
+        #     board.input_entry('O',"B","3")
+        #     board.input_entry('O',"C","2")
+        
+        #     # Assert
+        #     expect(minimax.best_move(board, board_logic)).to eq(["C","1"])
+        # end
     end
 
     context "#minimax_score" do
@@ -120,6 +147,52 @@ describe Logic::Minimax do
             # Assert
             expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth)).to eq([1, 0])
         end
+    end
+
+    xit "given the two empty spaces, returns a score of -1 when X loses the game" do
+        # Arrange
+        board.input_entry('X',"A","1")   # [X, X, O]
+        board.input_entry('X',"A","2")   # [O, X, O]
+        board.input_entry('O',"A","3")   # [ , O,  ]
+        board.input_entry('O',"B","1")
+        board.input_entry('X',"B","2")
+        board.input_entry('O',"B","3")
+        board.input_entry('O',"C","2")
+    
+
+        # Act
+        symbol = 'X'
+        row = "C"
+        column = "1"
+        depth = 0
+
+        board.input_entry(symbol, row, column)
+        
+        # Assert
+        expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, false)).to eq([-1, 0])
+    end
+
+    xit "given the two empty spaces, returns a score of 0 and the game is drawn " do
+        # Arrange
+        board.input_entry('X',"A","1")   # [X, X, O]
+        board.input_entry('X',"A","2")   # [O, X, O]
+        board.input_entry('O',"A","3")   # [ , O,  ]
+        board.input_entry('O',"B","1")
+        board.input_entry('X',"B","2")
+        board.input_entry('O',"B","3")
+        board.input_entry('O',"C","2")
+    
+
+        # Act
+        symbol = 'X'
+        row = "C"
+        column = "3"
+        depth = 0
+
+        board.input_entry(symbol, row, column)
+        
+        # Assert
+        expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth)).to eq([0, 0])
     end
 end
     
