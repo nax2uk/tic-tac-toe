@@ -29,9 +29,13 @@ module Logic
         
 
 
-        def minimax_score(board, board_logic, row, column, depth)
+        def minimax_score(board, board_logic, symbol, row, column, depth)
             if board_logic.has_won?(row, column, board)
-                return [-1, depth]
+                if symbol == 'O'
+                    return [-1, depth]
+                else
+                    return [1, depth]
+                end
             end
             return [0, depth]
         end
