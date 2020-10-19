@@ -15,28 +15,26 @@ module Logic
 
         def best_move(board, board_logic)
             best_score = -10000
-            best_row = ""
-            best_column = ""
+            best_coordinates = ["",""]
             best_depth = 20
             symbol = "X"
             for row in 0..2
                 for col in 0..2
                     if board_logic.validate_entry(ROW.key(row), COL.key(col), board)
                         board.input_entry(symbol, ROW.key(row), COL.key(col))
-                        result = minimax_score(board, board_logic, symbol, ROW.key(row), COL.key(col), 0)
+                        result = minimax_score(board, board_logic, symbol, ROW.key(row), COL.key(col), 0, false)
                         score, depth = result[0], result[1]
                         board.input_entry(" ", ROW.key(row), COL.key(col))
                         if score >= best_score
                             if depth <= best_depth
                                 best_score = score
-                                best_row = ROW.key(row)
-                                best_column = COL.key(col)
+                                best_coordinates = [ROW.key(row), COL.key(col)]
                             end
                         end 
                     end
                 end
             end
-            return [best_row, best_column]
+            return best_coordinates
         end
         
         def game_ends?(board, board_logic, symbol, row, column, depth)
