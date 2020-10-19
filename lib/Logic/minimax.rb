@@ -39,9 +39,7 @@ module Logic
             return [best_row, best_column]
         end
         
-
-
-        def minimax_score(board, board_logic, symbol, row, column, depth, is_next_turn_maximising = true)
+        def game_ends?(board, board_logic, symbol, row, column, depth)
             if board_logic.has_won?(row, column, board)
                 if symbol == 'O'
                     return [-1, depth]
@@ -49,16 +47,22 @@ module Logic
                     return [1, depth]
                 end
             end
-            # if board_logic.is_board_full?(board)
-            #     return [0, depth]
-            # end
-            return [0, depth]
+            if board_logic.is_board_full?(board)
+                return [0, depth]
+            end
         end
 
-                        # board.input_entry(ROW.key(row), COL.key(col))
-                        # result = minimax(board, board_logic, row, column)
-                        # score, depth = result[0], result[1]
-                        # board.remove_entry(ROW.key(row), COL.key(col))
+        def minimax_score(board, board_logic, symbol, row, column, depth, next_turn_maximising = true)
+            result = game_ends?(board, board_logic, symbol, row, column, depth)
+            if result != nil
+                return result 
+            end
 
+
+            if next_turn_maximising == true
+            else
+                return [-1, depth + 1]
+            end
+        end
     end
 end
