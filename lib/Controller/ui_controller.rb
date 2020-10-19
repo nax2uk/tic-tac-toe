@@ -24,9 +24,9 @@ module Controller
         end
 
         def print_board_or_exit_game(continue)
-            if continue == 'Y'
+            if continue == 'Y' || continue == 'y'
                 @board.print_empty_board
-            elsif continue == 'N'
+            elsif continue == 'N' || continue == 'n'
                 exit(0)
             end
         end
@@ -37,7 +37,7 @@ module Controller
             input_is_valid = false
 
             until input_is_valid
-                input = input_type.capture_input(prompt_string).upcase
+                input = input_type.capture_input(prompt_string)
                 input_is_valid = input_type.validate_input(input)
             end
             input

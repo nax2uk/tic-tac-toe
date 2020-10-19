@@ -4,7 +4,8 @@ module UI
         include CaptureInput
 
         def validate_input(row)
-            if row == "A" || row == "B" || row == "C"
+            row_upcase = row.upcase
+            if row_upcase == "A" || row_upcase == "B" || row_upcase == "C"
                 return true
             else
                 puts "Incorrect input! Please enter 'A','B' or 'C'"
