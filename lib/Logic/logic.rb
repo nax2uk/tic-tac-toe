@@ -41,7 +41,7 @@ module Logic
         end
 
         def get_best_move(board)
-            best_score = -10000
+            best_score = -10000.00000
             best_move = ["A","1"]
             symbol='X'
 
@@ -49,16 +49,17 @@ module Logic
                 for column in 0..2 do
                     if self.validate_entry(ROW[row], COL[column], board)
                         board.input_entry(symbol, ROW[row], COL[column])
-                        score = self.minimax(symbol, ROW[row], COL[column], board, 0, false)
+                        score = self.minimax(symbol, ROW[row], COL[column], board, 1, false)
+                        puts "score in best_move is #{score} and best_score is #{best_score}"
                         board.remove_entry(ROW[row], COL[column])
-                        if score > best_score
+                        if score >= best_score
                             best_move[0], best_move[1] = ROW[row], COL[column]
                             best_score = score
                         end
                     end
                 end
             end
-            
+            puts "best_score is #{best_score} at best_move #{best_move}"
             return best_move
         end
 
@@ -66,13 +67,22 @@ module Logic
 
             # base case / leaf node
             score = self.calculate_score_if_game_ends(symbol, row, column, board)
-            return score if score
+          
+            if score
+                puts "minimax score is #{score.to_f / depth}"
+                return score.to_f / depth
+            end
 
             # recursive case
             if next_turn_is_maximising
-                return maximising_score(row, column, board, depth)
+                score = maximising_score(row, column, board, depth)
+                # p score
+                puts "maximising score is #{score}"
+                return score
             else
-                return minimising_score(row, column, board, depth)
+                score = minimising_score(row, column, board, depth)
+                puts "minimising score is #{score}"
+                return score
             end
         end
 
@@ -87,7 +97,7 @@ module Logic
         end
 
         def minimising_score(row, column, board, depth)
-            best_score = 10000
+            best_score = 10000.00000
             symbol = 'O'
             for row in 0..2 do
                 for column in 0..2 do
@@ -95,7 +105,7 @@ module Logic
                         board.input_entry(symbol, ROW[row], COL[column])
                         score = self.minimax(symbol, ROW[row], COL[column], board, depth+1, true)
                         board.remove_entry(ROW[row], COL[column])
-                        if score < best_score
+                        if score <= best_score
                             best_score = score  
                         end
                     end
@@ -105,7 +115,7 @@ module Logic
         end
 
         def maximising_score(row, column, board, depth)
-            best_score = -10000
+            best_score = -10000.00000
             symbol = 'X'
             for row in 0..2 do
                 for column in 0..2 do
@@ -113,7 +123,7 @@ module Logic
                         board.input_entry(symbol, ROW[row], COL[column])
                         score = self.minimax(symbol, ROW[row], COL[column], board, depth+1, false)
                         board.remove_entry(ROW[row], COL[column])
-                        if score > best_score
+                        if score >= best_score
                             best_score = score  
                         end
                     end
