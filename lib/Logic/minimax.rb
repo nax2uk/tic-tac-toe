@@ -14,17 +14,30 @@ module Logic
         }.freeze 
 
         def best_move(board, board_logic)
+            best_score = -10000
+            best_row = ""
+            best_column = ""
+            best_depth = 20
+            symbol = "X"
             for row in 0..2
                 for col in 0..2
                     if board_logic.validate_entry(ROW.key(row), COL.key(col), board)
-                        # board.input_entry(ROW.key(row), COL.key(col))
-                        # result = minimax(board, board_logic, row, column)
-                        # score, depth = result[0], result[1]
-                        # board.remove_entry(ROW.key(row), COL.key(col))
-                        return [ROW.key(row), COL.key(col)]
+                        board.input_entry(symbol, ROW.key(row), COL.key(col))
+                        result = minimax_score(board, board_logic, symbol, ROW.key(row), COL.key(col), 0)
+                        score, depth = result[0], result[1]
+                        board.input_entry(" ", ROW.key(row), COL.key(col))
+                        if score >= best_score
+                            if depth <= best_depth
+                                best_score = score
+                                best_row = ROW.key(row)
+                                best_column = COL.key(col)
+                            end
+                        end
+                        
                     end
                 end
             end
+            return [best_row, best_column]
         end
         
 
@@ -40,12 +53,10 @@ module Logic
             return [0, depth]
         end
 
-    # def minimax_score(symbol,row, column, board, board_logic)
-    #     if board_logic.has_won?(row, column, board)
-    #         return -1 if symbol == 'O'
-    #         return 1 if symbol == 'X'
-    #     end
-    # end
+                        # board.input_entry(ROW.key(row), COL.key(col))
+                        # result = minimax(board, board_logic, row, column)
+                        # score, depth = result[0], result[1]
+                        # board.remove_entry(ROW.key(row), COL.key(col))
 
     end
 end

@@ -35,6 +35,20 @@ describe Logic::Minimax do
             # Assert
             expect(minimax.best_move(board, board_logic)).to eq(["B","2"])
         end
+        it "returns winning space, when there are two spaces left and only one will make 'X' win " do
+            # Arrange && Act
+            board.input_entry('O',"A","1")   # [O, O, X]
+            board.input_entry('O',"A","2")   # [X, O, X]
+            board.input_entry('X',"A","3")   # [O,  ,  ]
+            board.input_entry('X',"B","1")
+            board.input_entry('O',"B","2")
+            board.input_entry('X',"B","3")
+            board.input_entry('O',"C","1")
+        
+            
+            # Assert
+            expect(minimax.best_move(board, board_logic)).to eq(["C","3"])
+        end
     end
 
     context "#minimax_score" do
@@ -109,41 +123,4 @@ describe Logic::Minimax do
     end
 end
     
-
-
-# [O, X, O]
-# [X, X, O]
-# [O,  ,  ]
-
-
-
-
-    # context "#minimax" do
-    #     it "given that the user chooses the last empty space, minimax return 0 if user does not win" do
-    #         #Arrange []
-    #         board.input_entry('X',"A","1")
-    #         board.input_entry('X',"A","2")
-    #         board.input_entry('O',"A","3")
-    #         board.input_entry('O',"B","1")
-    #         board.input_entry('O',"B","2")
-    #         board.input_entry('X',"B","3")
-    #         board.input_entry('X',"C","1")
-    #         board.input_entry('X',"C","3")
-    #         # Act
-    #         symbol = 'O'
-    #         row = 'C'
-    #         column = '2'
-            
-
-    #         # Assert
-    #         expect(minimax.minimax(symbol, row, column, board, 0, false)).to eql(0)
-
-            
-    #     end
-    #     it "given that the user chooses the last empty space, minimax return 0 if user wins" do
-
-    #     end
-    # end
-
-
 
