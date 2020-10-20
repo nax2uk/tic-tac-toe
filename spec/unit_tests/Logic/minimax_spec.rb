@@ -19,7 +19,7 @@ describe Logic::Minimax do
             board.input_entry('X',"C","2")
     
             # Act && Assert
-            expect(minimax.best_move(board, board_logic)).to eq(["B","3"])
+            expect(minimax.best_move(board, board_logic)).to eq(["C","3"])
         end
         it "returns ['B','2'] when there is only one empty space left" do
             # Arrange && Act
