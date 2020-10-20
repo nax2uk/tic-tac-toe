@@ -26,8 +26,9 @@ module Logic
                         score, depth = result[0], result[1]
                         board.input_entry(" ", ROW.key(row), COL.key(col))
                         if score >= best_score
-                            if depth <= best_depth
+                            if depth < best_depth #|| best_score < 0
                                 best_score = score
+                                best_depth = depth
                                 best_coordinates = [ROW.key(row), COL.key(col)]
                             end
                         end 
@@ -68,8 +69,8 @@ module Logic
                             result = minimax_score(board, board_logic, symbol, ROW.key(row), COL.key(col), depth + 1, false)
                             score, depth = result[0], result[1]
                             board.input_entry(" ", ROW.key(row), COL.key(col))
-                            if score >= best_score
-                                if depth < best_depth
+                            if score >= best_score 
+                                if depth < best_depth #|| best_score < 0
                                     best_score = score
                                     best_depth = depth
                                 end
@@ -92,7 +93,7 @@ module Logic
                             score, depth = result[0], result[1]
                             board.input_entry(" ", ROW.key(row), COL.key(col))
                             if score <= best_score
-                                if depth < best_depth
+                                if depth < best_depth #|| best_score < 0
                                     best_score = score
                                     best_depth = depth
                                 end
