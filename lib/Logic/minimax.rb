@@ -58,8 +58,49 @@ module Logic
 
 
             if next_turn_maximising == true
-            else
-                return [-1, depth + 1]
+                symbol = "X"
+                best_score = -10000
+                best_depth = 20
+                for row in 0..2
+                    for col in 0..2
+                        if board_logic.validate_entry(ROW.key(row), COL.key(col), board)
+                            board.input_entry(symbol, ROW.key(row), COL.key(col))
+                            result = minimax_score(board, board_logic, symbol, ROW.key(row), COL.key(col), depth + 1, false)
+                            score, depth = result[0], result[1]
+                            board.input_entry(" ", ROW.key(row), COL.key(col))
+                            if score >= best_score
+                                if depth < best_depth
+                                    best_score = score
+                                    best_depth = depth
+                                end
+                            end
+                        end
+                    end
+                end
+                return [best_score, best_depth]
+            end
+
+            if next_turn_maximising == false
+                symbol = "O"
+                best_score = 10000
+                best_depth = 20
+                for row in 0..2
+                    for col in 0..2
+                        if board_logic.validate_entry(ROW.key(row), COL.key(col), board)
+                            board.input_entry(symbol, ROW.key(row), COL.key(col))
+                            result = minimax_score(board, board_logic, symbol, ROW.key(row), COL.key(col), depth + 1, true)
+                            score, depth = result[0], result[1]
+                            board.input_entry(" ", ROW.key(row), COL.key(col))
+                            if score <= best_score
+                                if depth < best_depth
+                                    best_score = score
+                                    best_depth = depth
+                                end
+                            end
+                        end
+                    end
+                end
+                return [best_score, best_depth]
             end
         end
     end

@@ -286,6 +286,48 @@ describe Logic::Minimax do
 
         end
     end
+    context "recursive case: returns depth = 2, when next_turn_maximising = true" do
+        it "returns a score of 0, when there are three empty spaces, and the game is drawn" do
+            # Arrange
+            board.input_entry('O',"A","1")   # [O, O, X]
+            board.input_entry('O',"A","2")   # [X, X, O]
+            board.input_entry('X',"A","3")   # [ ,  ,  ]
+            board.input_entry('X',"B","1")
+            board.input_entry('X',"B","2")
+            board.input_entry('O',"B","3")
+
+            # Act /Assert
+            symbol = 'O'
+            row = "C"
+            column = "1"
+            depth = 0
+
+            board.input_entry(symbol, row, column)
+
+            # Assert
+            expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, true)).to eq([0, 2])
+        end
+        it "returns a score of 0, when there are three empty spaces, and the game is drawn" do
+            # Arrange
+            board.input_entry('X',"A","1")   # [X, O, X]
+            board.input_entry('O',"A","2")   # [X, O, O]
+            board.input_entry('X',"A","3")   # [ ,  ,  ]
+            board.input_entry('X',"B","1")
+            board.input_entry('O',"B","2")
+            board.input_entry('O',"B","3")
+
+            # Act /Assert
+            symbol = 'O'
+            row = "C"
+            column = "1"
+            depth = 0
+
+            board.input_entry(symbol, row, column)
+
+            # Assert
+            expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, true)).to eq([0, 2])
+        end
+    end
 end 
 
     
