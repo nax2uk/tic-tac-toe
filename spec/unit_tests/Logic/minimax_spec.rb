@@ -366,6 +366,29 @@ describe Logic::Minimax do
             expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, true)).to eq([0, 2])
         end
 
+        it "given O is put at (C,2), returns a score of -1" do
+            # Arrange
+            board.input_entry('O',"A","1")
+            board.input_entry('X',"A","2")
+            board.input_entry('O',"A","3")   # [O, X, O]
+            board.input_entry('X',"B","1")   # [X, X, O]
+            board.input_entry('X',"B","2")   # [ ,  ,  ]
+            board.input_entry('O',"B","3")
+        
+            # Act /Assert
+            symbol = 'O'
+            row = "C"
+            column = "2"
+            depth = 0
+
+            board.input_entry(symbol, row, column)
+
+            # Assert
+            expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, true)).to eq([-1, 2])
+        end
+    end
+    context "recursive case: returns depth = 2, when next_turn_maximising = false" do
+
         it "returns a score of 1, when there are four empty spaces, and the game is won by X" do
             # Arrange
             board.input_entry('X',"A","3")   # [ ,  , X]
@@ -387,26 +410,7 @@ describe Logic::Minimax do
             expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, false)).to eq([1, 2])
         end
     
-        it "given O is put at (C,2), returns a score of 1" do
-            # Arrange
-            board.input_entry('O',"A","1")
-            board.input_entry('X',"A","2")
-            board.input_entry('O',"A","3")   # [O, X, O]
-            board.input_entry('X',"B","1")   # [X, X, O]
-            board.input_entry('X',"B","2")   # [ ,  ,  ]
-            board.input_entry('O',"B","3")
-        
-            # Act /Assert
-            symbol = 'O'
-            row = "C"
-            column = "2"
-            depth = 0
 
-            board.input_entry(symbol, row, column)
-
-            # Assert
-            expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, true)).to eq([-1, 2])
-        end
     end
     
     context "recursive case: returns depth = 3, when next_turn_maximising = false" do
