@@ -434,7 +434,7 @@ describe Logic::Minimax do
             board.input_entry(symbol, row, column)
 
             # Assert
-            expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, true)).to eq([1, 2])
+            expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, true)).to eq([0, 4])
         end  
     end
     

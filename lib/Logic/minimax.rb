@@ -22,6 +22,7 @@ module Logic
                 for col in 0..2
                     if board_logic.validate_entry(ROW.key(row), COL.key(col), board)
                         board.input_entry(symbol, ROW.key(row), COL.key(col))
+                        puts "added X at #{ROW.key(row)}#{COL.key(col)}"
                         result = minimax_score(board, board_logic, symbol, ROW.key(row), COL.key(col), 0, false)
                         score, depth = result[0], result[1]
                         board.input_entry(" ", ROW.key(row), COL.key(col))
@@ -56,15 +57,16 @@ module Logic
             end
         end
 
-        def minimax_score(board, board_logic, symbol, row, column, depth, next_turn_maximising = true)
-            puts "depth is #{depth}"
+        def minimax_score(board, board_logic, symbol, row, column, depth, next_turn_maximising)
+            
             result = game_ends?(board, board_logic, symbol, row, column, depth)
             if result != nil
                 return result 
             end
-
+            current_depth = depth
 
             if next_turn_maximising
+                puts "maximising"
                 symbol = "X"
                 best_score = -10000
                 best_depth = 20
@@ -72,6 +74,7 @@ module Logic
                     for col in 0..2
                         if board_logic.validate_entry(ROW.key(row), COL.key(col), board)
                             board.input_entry(symbol, ROW.key(row), COL.key(col))
+                            puts "added X at #{ROW.key(row)}#{COL.key(col)} depth is #{depth+1}"
                             result = minimax_score(board, board_logic, symbol, ROW.key(row), COL.key(col), depth + 1, false)
                             score, depth = result[0], result[1]
                             board.input_entry(" ", ROW.key(row), COL.key(col))
@@ -86,7 +89,7 @@ module Logic
                                    end
                                 end 
                             end
-                            depth = 0
+                            depth = current_depth
                         end
                     end
                 end
@@ -94,6 +97,7 @@ module Logic
                 
                 return [best_score, best_depth]
             else
+                puts "minimising"
                 symbol = "O"
                 best_score = 10000
                 best_depth = 20
@@ -101,6 +105,7 @@ module Logic
                     for col in 0..2
                         if board_logic.validate_entry(ROW.key(row), COL.key(col), board)
                             board.input_entry(symbol, ROW.key(row), COL.key(col))
+                            puts "added O at #{ROW.key(row)}#{COL.key(col)} depth is #{depth+1}"
                             result = minimax_score(board, board_logic, symbol, ROW.key(row), COL.key(col), depth + 1, true)
                             score, depth = result[0], result[1]
                             board.input_entry(" ", ROW.key(row), COL.key(col))
@@ -115,7 +120,7 @@ module Logic
                                    end
                                 end 
                             end
-                            depth = 0
+                            depth = current_depth
                         end
 
                     end
