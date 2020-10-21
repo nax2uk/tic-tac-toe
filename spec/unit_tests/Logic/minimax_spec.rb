@@ -204,7 +204,7 @@ describe Logic::Minimax do
                 expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, false)).to eq([1, 0])
             end
 
-            it "returns a score of -1, when there are two empty spaces, and 'O' wins" do
+            it "returns a score of 1, when there are two empty spaces, and 'X' wins" do
                 # Arrange
                 board.input_entry('O',"A","1")   # [O, O, X]
                 board.input_entry('O',"A","2")   # [X, O, X]
