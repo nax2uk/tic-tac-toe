@@ -342,7 +342,7 @@ describe Logic::Minimax do
             expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, true)).to eq([0, 2])
         end
 
-        it "returns a score of 0, when there are four empty spaces, and the game is drawn" do
+        it "returns a score of 1, when there are four empty spaces, and the game is won by X" do
             # Arrange
             board.input_entry('X',"A","3")   # [ ,  , X]
             board.input_entry('O',"B","3")   # [ ,  , O]
