@@ -55,9 +55,7 @@ module Logic
         def minimax_score(board, board_logic, symbol, row, column, depth, next_turn_maximising)
             
             result = game_ends?(board, board_logic, symbol, row, column, depth)
-            if result != nil
-                return result 
-            end
+            return result if result
 
             if next_turn_maximising
 
