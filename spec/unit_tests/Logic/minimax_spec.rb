@@ -158,7 +158,7 @@ describe Logic::Minimax do
                 expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, false)).to eq([1, 0])
             end
 
-            it "given the two empty spaces, returns a score of 0 and the game is drawn " do
+            it "given the two empty spaces, returns a score of 1 and the game is won " do
                 # Arrange
                 board.input_entry('X',"A","1")   # [X, X, O]
                 board.input_entry('X',"A","2")   # [O, X, O]
@@ -181,7 +181,7 @@ describe Logic::Minimax do
                 expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, false)).to eq([1, 0])
             end
 
-            it "given the two empty spaces, returns a score of 0 and the game is drawn " do
+            it "given the two empty spaces, returns a score of 1 and the game is won " do
                 # Arrange
                 board.input_entry('X',"A","1")   # [X, X, O]
                 board.input_entry('X',"A","2")   # [O, X, O]
