@@ -26,12 +26,17 @@ module Logic
                         score, depth = result[0], result[1]
                         board.input_entry(" ", ROW.key(row), COL.key(col))
                         if score >= best_score
-                            if depth < best_depth
-                                best_score = score
-                                best_depth = depth
-                                best_coordinates = [ROW.key(row), COL.key(col)]
-                            end
-                        end 
+                            if score > best_score
+                               best_score = score
+                               best_depth = depth
+                               best_coordinates = [ROW.key(row), COL.key(col)]
+                            elsif score == best_score
+                               if depth < best_depth 
+                                  best_depth = depth
+                                  best_coordinates = [ROW.key(row), COL.key(col)]
+                               end
+                            end 
+                        end
                     end
                 end
             end
@@ -52,13 +57,14 @@ module Logic
         end
 
         def minimax_score(board, board_logic, symbol, row, column, depth, next_turn_maximising = true)
+            puts "depth is #{depth}"
             result = game_ends?(board, board_logic, symbol, row, column, depth)
             if result != nil
                 return result 
             end
 
 
-            if next_turn_maximising == true
+            if next_turn_maximising
                 symbol = "X"
                 best_score = -10000
                 best_depth = 20
@@ -69,19 +75,25 @@ module Logic
                             result = minimax_score(board, board_logic, symbol, ROW.key(row), COL.key(col), depth + 1, false)
                             score, depth = result[0], result[1]
                             board.input_entry(" ", ROW.key(row), COL.key(col))
-                            if score >= best_score 
-                                if depth < best_depth
-                                    best_score = score
-                                    best_depth = depth
-                                end
+                            puts "in maximising score is #{score} and best_score is #{best_score} depth is #{depth} and best depth is #{best_depth}"
+                            if score >= best_score
+                                if score > best_score
+                                   best_score = score
+                                   best_depth = depth
+                                elsif score == best_score
+                                   if depth < best_depth 
+                                      best_depth = depth
+                                   end
+                                end 
                             end
+                            depth = 0
                         end
                     end
                 end
+                puts "best_score is #{best_score}, best_depth is #{best_depth}"
+                
                 return [best_score, best_depth]
-            end
-
-            if next_turn_maximising == false
+            else
                 symbol = "O"
                 best_score = 10000
                 best_depth = 20
@@ -92,17 +104,26 @@ module Logic
                             result = minimax_score(board, board_logic, symbol, ROW.key(row), COL.key(col), depth + 1, true)
                             score, depth = result[0], result[1]
                             board.input_entry(" ", ROW.key(row), COL.key(col))
+                            puts "in minimising score is #{score} and best_score is #{best_score} depth is #{depth} and best depth is #{best_depth}"
                             if score <= best_score
-                                if depth < best_depth
-                                    best_score = score
-                                    best_depth = depth
-                                end
+                                if score < best_score
+                                   best_score = score
+                                   best_depth = depth
+                                elsif score == best_score
+                                   if depth < best_depth 
+                                      best_depth = depth
+                                   end
+                                end 
                             end
+                            depth = 0
                         end
+
                     end
                 end
-                return [best_score, best_depth]
+                
+                return [best_score, best_depth] 
             end
+            
         end
     end
 end

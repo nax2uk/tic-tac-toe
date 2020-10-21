@@ -366,7 +366,7 @@ describe Logic::Minimax do
             expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, true)).to eq([0, 2])
         end
 
-        it "given O is put at (C,2), returns a score of -1" do
+        it "given O is put at (C,2), returns a score of 0" do
             # Arrange
             board.input_entry('O',"A","1")
             board.input_entry('X',"A","2")
@@ -384,8 +384,9 @@ describe Logic::Minimax do
             board.input_entry(symbol, row, column)
 
             # Assert
-            expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, true)).to eq([-1, 2])
+            expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, true)).to eq([0, 2])
         end
+    
     end
     context "recursive case: returns depth = 2, when next_turn_maximising = false" do
 
@@ -415,6 +416,26 @@ describe Logic::Minimax do
     
     context "recursive case: returns depth = 3, when next_turn_maximising = false" do
         
+    end
+    context "recursive case: returns depth = 4, when next_turn_maximising = true" do
+        it "given O is put at (B, 3), returns a score of -1" do
+            # Arrange
+            board.input_entry('O',"A","1")  # [O, X, O]
+            board.input_entry('X',"A","2")  # [ ,  ,  ]
+            board.input_entry('O',"A","3")  # [X,  ,  ] 
+            board.input_entry('X',"C","1")  
+        
+            # Act /Assert
+            symbol = 'O'
+            row = "B"
+            column = "3"
+            depth = 0
+
+            board.input_entry(symbol, row, column)
+
+            # Assert
+            expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, true)).to eq([1, 2])
+        end  
     end
     
 end 
