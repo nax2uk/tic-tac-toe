@@ -4,10 +4,10 @@ module UI
         include CaptureInput
 
         def validate_input(column)
-            if column == "1" || column == "2" || column == "3"
+            if column == "1" || column == "2" || column == "3" || column == "4" || column == "5"
                 return true
             else
-                puts "Incorrect input! Please enter '1', '2', or '3'"
+                puts "Incorrect input! Please enter '1', '2', '3', '4', or '5'"
                 return false
             end
         end
