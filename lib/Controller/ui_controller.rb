@@ -23,6 +23,17 @@ module Controller
             @standard_messages.output_instructions
         end
 
+        def print_game_end_messages(game_score)
+            case game_score
+                when 1
+                    @standard_messages.output_computer_wins_message
+                when -1
+                    @standard_messages.output_user_wins_message
+                else
+                    @standard_messages.output_draw_message
+            end
+        end
+
         def print_board_or_exit_game(continue)
             if continue == 'Y' || continue == 'y'
                 @board.print_empty_board

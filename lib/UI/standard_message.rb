@@ -19,6 +19,18 @@ module UI
 
             HEREDOC
         end
+
+        def output_computer_wins_message
+            puts "BETTER LUCK NEXT TIME, DON'T FEEL TOO BAD, WE ARE UNBEATABLE MWAHAHAAHA 😈 🌚"
+        end
+
+        def output_draw_message
+            puts "YOU DID WELL TO DRAW AGAINST OUR UNBEATABLE AI 😱 👽"
+        end
+
+        def output_user_wins_message
+            puts "IF YOU SEE THIS THEN OUR GAME IS BROKEN OH DEAR 😩"
+        end
     end
 end
     

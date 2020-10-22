@@ -50,16 +50,7 @@ class Main
             @ui_controller.print_current_board(current_board)
             turn += 1
         end
-
-        case @board_controller.game_score
-            when 1
-                puts "BETTER LUCK NEXT TIME, DON'T FEEL TOO BAD, WE ARE UNBEATABLE MWAHAHAAHA 😈 🌚"
-            when -1
-                puts "IF YOU SEE THIS THEN OUR GAME IS BROKEN OH DEAR 😩"
-            else
-                puts "YOU DID WELL TO DRAW AGAINST OUR UNBEATABLE AI 😱 👽"
-        end
-        
+        @ui_controller.print_game_end_messages(@board_controller.game_score)
     end
 end
 
