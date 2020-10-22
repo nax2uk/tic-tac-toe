@@ -34,6 +34,10 @@ module Controller
             end
         end
 
+        def print_output_space_is_taken_message
+            @standard_messages.output_space_is_taken_message
+        end
+
         def print_board_or_exit_game(continue)
             if continue == 'Y' || continue == 'y'
                 @board.print_empty_board

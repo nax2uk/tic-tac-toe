@@ -31,6 +31,10 @@ module UI
         def output_user_wins_message
             puts "IF YOU SEE THIS THEN OUR GAME IS BROKEN OH DEAR 😩"
         end
+
+        def output_space_is_taken_message
+            puts "This space is taken - please put your move somewhere else."
+        end
     end
 end
     

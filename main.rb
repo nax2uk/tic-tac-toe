@@ -22,7 +22,7 @@ class Main
             puts "row: #{row_coordinate}, col: #{column_coordinate}"
             location_is_valid = @board_controller.validate_location(row_coordinate, column_coordinate)
             unless location_is_valid  
-                puts "This space is taken - please put your move somewhere else."
+                @ui_controller.print_output_space_is_taken_message
             end
         end
         return [row_coordinate, column_coordinate]
