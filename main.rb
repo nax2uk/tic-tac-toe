@@ -33,7 +33,7 @@ class Main
         continue = @ui_controller.get_input_and_validate("Do you want to continue? y/n: ", @ui_controller.continue_message)
         @ui_controller.print_board_or_exit_game(continue)
     
-        until @board_controller.game_is_won == true || turn == @board_controller.max_turns
+        until @board_controller.game_is_won || turn == @board_controller.max_turns
             if turn % 2 == 0
                 coordinates = self.get_valid_coordinates
                 row, col = coordinates[0], coordinates[1]
