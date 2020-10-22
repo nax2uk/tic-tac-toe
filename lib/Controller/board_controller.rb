@@ -13,7 +13,7 @@ module Controller
             @board = BoardArray::Board.new
             @board_logic = Logic::BoardLogic.new
             @minimax = Logic::Minimax.new
-            @game_score = 100
+            @game_score = 0
             @game_is_won = false
         end
 
