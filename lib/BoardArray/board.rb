@@ -1,7 +1,6 @@
 module BoardArray
     class Board 
-        attr_accessor :board_array
-        attr_reader :max_turns
+        attr_reader :max_turns, :board_array
         
 
         def initialize 
