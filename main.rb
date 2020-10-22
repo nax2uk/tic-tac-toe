@@ -37,7 +37,7 @@ class Main
         #puts @board_controller.game_is_won
 
         #puts @board_controller.game_is_won == true || turn == @max_turns
-        until @board_controller.game_is_won == true || turn == @max_turns
+        until @board_controller.game_is_won == true || turn == @board_controller.max_turns
             if turn % 2 == 0
                 coordinates = self.get_valid_coordinates
                 row, col = coordinates[0], coordinates[1]

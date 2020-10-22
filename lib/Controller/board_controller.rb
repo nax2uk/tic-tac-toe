@@ -7,12 +7,13 @@ require './lib/Logic/minimax'
 
 module Controller
     class BoardController
-        attr_reader :game_score, :game_is_won
+        attr_reader :game_score, :game_is_won, :max_turns
         def initialize
             
             @board = BoardArray::Board.new
             @board_logic = Logic::BoardLogic.new
             @minimax = Logic::Minimax.new
+            @max_turns = @board.max_turns
             @game_score = 0
             @game_is_won = false
         end

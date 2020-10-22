@@ -1,11 +1,14 @@
 module BoardArray
     class Board 
         attr_accessor :board_array
+        attr_reader :max_turns
+        
 
         def initialize 
-            @board_array = Array.new(3) {Array.new(3, " ")} 
-        
+            @board_array = Array.new(3) {Array.new(3, " ")}
+            @max_turns = 9
         end
+
 
         ROW = {
                 'A'=> 0,
