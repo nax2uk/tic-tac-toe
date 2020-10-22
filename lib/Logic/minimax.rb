@@ -78,21 +78,21 @@ module Logic
                     if board_logic.validate_entry(ROW.key(row), COL.key(col), board)
                         board.input_entry(symbol, ROW.key(row), COL.key(col))
                         puts "added X at #{ROW.key(row)}#{COL.key(col)} depth is #{depth+1}"
-                        result = minimax_score(board, board_logic, symbol, ROW.key(row), COL.key(col), depth + 1, false)
-                        score, depth = result[0], result[1]
+                        result = minimax_score(board, board_logic, symbol, ROW.key(row), COL.key(col), current_depth + 1, false)
+                        score, current_depth = result[0], result[1]
                         board.input_entry(" ", ROW.key(row), COL.key(col))
                         puts "in maximising score is #{score} and best_score is #{best_score} depth is #{depth} and best depth is #{best_depth}"
                         if score >= best_score
                             if score > best_score
                                best_score = score
-                               best_depth = depth
+                               best_depth = current_depth
                             elsif score == best_score
-                               if depth < best_depth 
-                                  best_depth = depth
+                               if current_depth < best_depth 
+                                  best_depth = current_depth
                                end
                             end 
                         end
-                        depth = current_depth
+                        current_depth = depth
                     end
                 end
             end
@@ -112,25 +112,24 @@ module Logic
                     if board_logic.validate_entry(ROW.key(row), COL.key(col), board)
                         board.input_entry(symbol, ROW.key(row), COL.key(col))
                         puts "added O at #{ROW.key(row)}#{COL.key(col)} depth is #{depth+1}"
-                        result = minimax_score(board, board_logic, symbol, ROW.key(row), COL.key(col), depth + 1, true)
-                        score, depth = result[0], result[1]
+                        result = minimax_score(board, board_logic, symbol, ROW.key(row), COL.key(col), current_depth + 1, true)
+                        score, current_depth = result[0], result[1]
                         board.input_entry(" ", ROW.key(row), COL.key(col))
                         puts "in minimising score is #{score} and best_score is #{best_score} depth is #{depth} and best depth is #{best_depth}"
                         if score <= best_score
                             if score < best_score
                                best_score = score
-                               best_depth = depth
+                               best_depth = current_depth
                             elsif score == best_score
-                               if depth < best_depth 
-                                  best_depth = depth
+                               if current_depth < best_depth 
+                                  best_depth = current_depth
                                end
                             end 
                         end
-                        depth = current_depth
+                        current_depth = depth
                     end
                 end
             end
-            
             return [best_score, best_depth] 
         end
     end
