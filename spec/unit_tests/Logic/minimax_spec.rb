@@ -19,7 +19,7 @@ describe Logic::Minimax do
             board.input_entry('X',"C","2")
     
             # Act && Assert
-            expect(minimax.best_move(board, board_logic)).to eq(["B","3"])
+            expect(minimax.best_move(board, board_logic)).to eq(["C","3"])
         end
         it "returns ['B','2'] when there is only one empty space left" do
             # Arrange && Act
@@ -158,7 +158,7 @@ describe Logic::Minimax do
                 expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, false)).to eq([1, 0])
             end
 
-            it "given the two empty spaces, returns a score of 0 and the game is drawn " do
+            it "given the two empty spaces, returns a score of 1 and the game is won " do
                 # Arrange
                 board.input_entry('X',"A","1")   # [X, X, O]
                 board.input_entry('X',"A","2")   # [O, X, O]
@@ -181,7 +181,7 @@ describe Logic::Minimax do
                 expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, false)).to eq([1, 0])
             end
 
-            it "given the two empty spaces, returns a score of 0 and the game is drawn " do
+            it "given the two empty spaces, returns a score of 1 and the game is won " do
                 # Arrange
                 board.input_entry('X',"A","1")   # [X, X, O]
                 board.input_entry('X',"A","2")   # [O, X, O]
@@ -204,7 +204,7 @@ describe Logic::Minimax do
                 expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, false)).to eq([1, 0])
             end
 
-            it "returns a score of -1, when there are two empty spaces, and 'O' wins" do
+            it "returns a score of 1, when there are two empty spaces, and 'X' wins" do
                 # Arrange
                 board.input_entry('O',"A","1")   # [O, O, X]
                 board.input_entry('O',"A","2")   # [X, O, X]
@@ -299,6 +299,30 @@ describe Logic::Minimax do
             expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, false)).to eq([0, 1])
 
         end
+     
+    end
+    context "recursive case: returns depth = 1, when next_turn_maximising = true" do
+        it "returns a score of 1, and the game is won" do
+            # Arrange
+            board.input_entry('O',"A","1")   # [O, X, O]
+            board.input_entry('X',"A","2")   # [X, X,  ]
+            board.input_entry('O',"A","3")   # [O,  ,  ]
+            board.input_entry('X',"B","1")
+            board.input_entry('X',"B","2")
+            board.input_entry('O',"C","1")
+
+            # Act /Assert
+            symbol = 'O'
+            row = "C"
+            column = "2"
+            depth = 0
+
+            board.input_entry(symbol, row, column)
+
+            # Assert
+            expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, true)).to eq([1, 1])
+
+        end
     end
     context "recursive case: returns depth = 2, when next_turn_maximising = true" do
         it "returns a score of 0, when there are three empty spaces, and the game is drawn" do
@@ -342,7 +366,31 @@ describe Logic::Minimax do
             expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, true)).to eq([0, 2])
         end
 
-        it "returns a score of 0, when there are four empty spaces, and the game is drawn" do
+        it "given O is put at (C,2), returns a score of 0" do
+            # Arrange
+            board.input_entry('O',"A","1")
+            board.input_entry('X',"A","2")
+            board.input_entry('O',"A","3")   # [O, X, O]
+            board.input_entry('X',"B","1")   # [X, X, O]
+            board.input_entry('X',"B","2")   # [ ,  ,  ]
+            board.input_entry('O',"B","3")
+        
+            # Act /Assert
+            symbol = 'O'
+            row = "C"
+            column = "2"
+            depth = 0
+
+            board.input_entry(symbol, row, column)
+
+            # Assert
+            expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, true)).to eq([0, 2])
+        end
+    
+    end
+    context "recursive case: returns depth = 2, when next_turn_maximising = false" do
+
+        it "returns a score of 1, when there are four empty spaces, and the game is won by X" do
             # Arrange
             board.input_entry('X',"A","3")   # [ ,  , X]
             board.input_entry('O',"B","3")   # [ ,  , O]
@@ -362,11 +410,14 @@ describe Logic::Minimax do
             # Assert
             expect(minimax.minimax_score(board, board_logic, symbol, row, column, depth, false)).to eq([1, 2])
         end
+    
+
     end
     
     context "recursive case: returns depth = 3, when next_turn_maximising = false" do
         
     end
+  
     
 end 
 
