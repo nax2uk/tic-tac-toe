@@ -3,8 +3,10 @@
 # But can have one central controller which is what we have on lines 40/41
 require './lib/tic_tac_toe'
 
-tic_tac_toe = TicTacToe.new
-tic_tac_toe.execute
+class Main
+    tic_tac_toe = TicTacToe.new
+    tic_tac_toe.execute
+end
 
 
 
