@@ -70,6 +70,5 @@ module BoardArray
             diagonal_array[2] = board_array[ROW["E"]][COL["1"]]
             diagonal_array
         end
-
     end
 end

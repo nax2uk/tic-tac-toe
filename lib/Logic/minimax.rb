@@ -2,24 +2,28 @@ module Logic
     class Minimax
 
         ROW = {
-            'A'=> 0, 
+            'A'=> 0,
             'B'=> 1,
-            'C'=> 2
-        }.freeze
+            'C'=> 2,
+            'D'=> 3,
+            'E'=> 4
+    }.freeze
 
-        COL = {
-                '1'=> 0,
-                '2'=> 1,
-                '3'=> 2
-        }.freeze 
+    COL = {
+            '1'=> 0,
+            '2'=> 1,
+            '3'=> 2,
+            '4'=> 3,
+            '5'=> 4
+    }.freeze 
 
         def best_move(board, board_logic)
             best_score = -10000
             best_coordinates = ["",""]
-            best_depth = 20
+            best_depth = 100
             symbol = "X"
-            for row in 0..2
-                for col in 0..2
+            for row in 0..4
+                for col in 0..4
                     if board_logic.validate_entry(ROW.key(row), COL.key(col), board)
                         board.input_entry(symbol, ROW.key(row), COL.key(col))
                         result = minimax_score(board, board_logic, symbol, ROW.key(row), COL.key(col), 0, false)
@@ -69,10 +73,10 @@ module Logic
         def maximising_score(board, board_logic, row, column, depth)
             symbol = "X"
             best_score = -10000
-            best_depth = 20
+            best_depth = 100
             current_depth = depth
-            for row in 0..2
-                for col in 0..2
+            for row in 0..4
+                for col in 0..4
                     if board_logic.validate_entry(ROW.key(row), COL.key(col), board)
                         board.input_entry(symbol, ROW.key(row), COL.key(col))
                         result = minimax_score(board, board_logic, symbol, ROW.key(row), COL.key(col), current_depth + 1, false)
@@ -99,10 +103,10 @@ module Logic
         def minimising_score(board, board_logic, row, column, depth)
             symbol = "O"
             best_score = 10000
-            best_depth = 20
+            best_depth = 100
             current_depth = depth
-            for row in 0..2
-                for col in 0..2
+            for row in 0..4
+                for col in 0..4
                     if board_logic.validate_entry(ROW.key(row), COL.key(col), board)
                         board.input_entry(symbol, ROW.key(row), COL.key(col))
                         result = minimax_score(board, board_logic, symbol, ROW.key(row), COL.key(col), current_depth + 1, true)
