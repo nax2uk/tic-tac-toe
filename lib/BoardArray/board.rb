@@ -5,21 +5,25 @@ module BoardArray
         
 
         def initialize 
-            @board_array = Array.new(3) {Array.new(3, " ")}
-            @max_turns = 9
+            @board_array = Array.new(5) {Array.new(5, " ")}
+            @max_turns = 25
         end
 
 
         ROW = {
                 'A'=> 0,
                 'B'=> 1,
-                'C'=> 2
+                'C'=> 2,
+                'D'=> 3,
+                'E'=> 4
         }.freeze
 
         COL = {
                 '1'=> 0,
                 '2'=> 1,
-                '3'=> 2
+                '3'=> 2,
+                '4'=> 3,
+                '5'=> 4
         }.freeze 
 
         def input_entry(symbol, row, column)
@@ -40,7 +44,7 @@ module BoardArray
         end
 
         def get_column(column)
-            column_array = Array.new(3, " ") 
+            column_array = Array.new(5, " ") 
             column_array.each_index do |i|
                 column_array[i] = @board_array[i][COL[column]].dup
             end
@@ -48,18 +52,22 @@ module BoardArray
         end
 
         def get_left_diagonal
-            diagonal_array = Array.new(3, " ")
+            diagonal_array = Array.new(5, " ")
             diagonal_array[0] = board_array[ROW["A"]][COL["1"]]
             diagonal_array[1] = board_array[ROW["B"]][COL["2"]]
             diagonal_array[2] = board_array[ROW["C"]][COL["3"]]
+            diagonal_array[3] = board_array[ROW["D"]][COL["4"]]
+            diagonal_array[4] = board_array[ROW["E"]][COL["5"]]
             diagonal_array
         end
 
         def get_right_diagonal
-            diagonal_array = Array.new(3, " ")
-            diagonal_array[0] = board_array[ROW["A"]][COL["3"]]
-            diagonal_array[1] = board_array[ROW["B"]][COL["2"]]
-            diagonal_array[2] = board_array[ROW["C"]][COL["1"]]
+            diagonal_array = Array.new(5, " ")
+            diagonal_array[0] = board_array[ROW["A"]][COL["5"]]
+            diagonal_array[1] = board_array[ROW["B"]][COL["4"]]
+            diagonal_array[2] = board_array[ROW["C"]][COL["3"]]
+            diagonal_array[1] = board_array[ROW["D"]][COL["2"]]
+            diagonal_array[2] = board_array[ROW["E"]][COL["1"]]
             diagonal_array
         end
 
