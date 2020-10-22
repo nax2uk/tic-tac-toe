@@ -37,7 +37,7 @@ module Controller
             input_is_valid = false
 
             until input_is_valid
-                input = input_type.capture_input(prompt_string)
+                input = input_type.capture_input(prompt_string).upcase
                 input_is_valid = input_type.validate_input(input)
             end
             input
