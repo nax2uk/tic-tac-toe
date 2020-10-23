@@ -1,12 +1,20 @@
-
+require 'lolize'
 # what is being output on the screen / terminal
 module UI
     class StandardMessage
 
         def output_welcome_message
-            puts "Welcome to Tic Tac Toe!\n\n"
+            colorizer = Lolize::Colorizer.new
+            colorizer.write "
+            ████████╗██╗░█████╗░  ████████╗░█████╗░░█████╗░  ████████╗░█████╗░███████╗
+            ╚══██╔══╝██║██╔══██╗  ╚══██╔══╝██╔══██╗██╔══██╗  ╚══██╔══╝██╔══██╗██╔════╝
+            ░░░██║░░░██║██║░░╚═╝  ░░░██║░░░███████║██║░░╚═╝  ░░░██║░░░██║░░██║█████╗░░
+            ░░░██║░░░██║██║░░██╗  ░░░██║░░░██╔══██║██║░░██╗  ░░░██║░░░██║░░██║██╔══╝░░
+            ░░░██║░░░██║╚█████╔╝  ░░░██║░░░██║░░██║╚█████╔╝  ░░░██║░░░╚█████╔╝███████╗
+            ░░░╚═╝░░░╚═╝░╚════╝░  ░░░╚═╝░░░╚═╝░░╚═╝░╚════╝░  ░░░╚═╝░░░░╚════╝░╚══════╝\n\n"
+            
+            colorizer.write "                                   Welcome to Tic Tac Toe!\n\n"  
         end
-
         def output_instructions
             puts <<~HEREDOC
                 Instructions:
