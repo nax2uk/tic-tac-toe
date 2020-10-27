@@ -37,10 +37,6 @@ Install required packages and dependencies
 ```bash
 bundle install
 ```
-On the command line:
-```
-chmod +x main.rb
-```
 Run main.rb
 ```
 ./main.rb
