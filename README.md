@@ -4,6 +4,9 @@
 * It is a tic tac toe game, coded in Ruby, which runs in the terminal. 
 * It uses the minimax algortihm to ensure that the user can either draw or lose against the computer.
 
+# Game Preview
+<img src="https://azlina-yeo.netlify.app/img/portfolio/tic_tac_toe.gif" width=250>
+
 ## Learning Aims
 * To pair program on a task
 * To practice ATDD and TDD
