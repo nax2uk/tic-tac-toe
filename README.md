@@ -1,4 +1,4 @@
-# Tic Tac Toe (still working on it)
+# Tic Tac Toe CLI Game
 
 * This is a Made Tech Academy pair programming task. 
 * It is a tic tac toe game, coded in Ruby, which runs in the terminal. 
