@@ -3,8 +3,6 @@
 * This is a Made Tech Academy pair programming task. 
 * It is a tic tac toe game, coded in Ruby, which runs in the terminal. 
 * It uses the minimax algortihm to ensure that the user can either draw or lose against the computer.
-
-# Game Preview
 * You can see a preview of the game [here](https://azlina-yeo.netlify.app/img/portfolio/tic_tac_toe.gif)
 
 ## Learning Aims
@@ -44,7 +42,8 @@ Run main.rb
 ```
 ./main.rb
 ```
-
+## Notes
+* Outstanding tasks: To add more tests to the code.
 
 ## Authors
 
