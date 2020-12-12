@@ -5,7 +5,7 @@
 * It uses the minimax algortihm to ensure that the user can either draw or lose against the computer.
 
 # Game Preview
-<img src="https://azlina-yeo.netlify.app/img/portfolio/tic_tac_toe.gif" width=250>
+* You can see a preview of the game [here](https://azlina-yeo.netlify.app/img/portfolio/tic_tac_toe.gif)
 
 ## Learning Aims
 * To pair program on a task
